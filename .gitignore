@@ -1,0 +1,7 @@
+#directories
+CmakeFiles/
+
+
+#files
+cmake_install.cmake
+CMakeCache.txt

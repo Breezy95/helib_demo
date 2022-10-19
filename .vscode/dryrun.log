@@ -1,0 +1,22 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/fabreezy/helib_demo'
+/usr/bin/cmake -S/home/fabreezy/helib_demo -B/home/fabreezy/helib_demo --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/cmake -E cmake_progress_start /home/fabreezy/helib_demo/CMakeFiles /home/fabreezy/helib_demo//CMakeFiles/progress.marks
+make -s -f CMakeFiles/Makefile2 all
+make[1]: Entering directory '/home/fabreezy/helib_demo'
+make -s -f CMakeFiles/helibdemo.dir/build.make CMakeFiles/helibdemo.dir/depend
+make[2]: Entering directory '/home/fabreezy/helib_demo'
+cd /home/fabreezy/helib_demo && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/fabreezy/helib_demo /home/fabreezy/helib_demo /home/fabreezy/helib_demo /home/fabreezy/helib_demo /home/fabreezy/helib_demo/CMakeFiles/helibdemo.dir/DependInfo.cmake --color=
+make[2]: Leaving directory '/home/fabreezy/helib_demo'
+make -s -f CMakeFiles/helibdemo.dir/build.make CMakeFiles/helibdemo.dir/build
+make[2]: Entering directory '/home/fabreezy/helib_demo'
+/usr/bin/cmake -E cmake_echo_color --switch= --green --progress-dir=/home/fabreezy/helib_demo/CMakeFiles --progress-num=1 "Building CXX object CMakeFiles/helibdemo.dir/client.cpp.o"
+/usr/bin/c++ -DHELIB_BOOT_THREADS -DHELIB_THREADS -isystem /usr/local/helib_pack/include -std=c++17 -o CMakeFiles/helibdemo.dir/client.cpp.o -c /home/fabreezy/helib_demo/client.cpp
+/usr/bin/cmake -E cmake_echo_color --switch= --green --bold --progress-dir=/home/fabreezy/helib_demo/CMakeFiles --progress-num=2 "Linking CXX executable helibdemo"
+/usr/bin/cmake -E cmake_link_script CMakeFiles/helibdemo.dir/link.txt --verbose=
+make[2]: Leaving directory '/home/fabreezy/helib_demo'
+/usr/bin/cmake -E cmake_echo_color --switch= --progress-dir=/home/fabreezy/helib_demo/CMakeFiles --progress-num=1,2 "Built target helibdemo"
+make[1]: Leaving directory '/home/fabreezy/helib_demo'
+/usr/bin/cmake -E cmake_progress_start /home/fabreezy/helib_demo/CMakeFiles 0
+make: Leaving directory '/home/fabreezy/helib_demo'
+ 
