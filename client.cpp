@@ -5,9 +5,12 @@
 #include <time.h>
 #include <string>
 #include <algorithm>
+#include <boost/asio.hpp>
+#include <boost/array.hpp>
 //#include <helib/helib.h>
 
 using namespace std;
+using boost::asio::ip::tcp;
 
 
 void number_placement(string* val){
@@ -30,6 +33,8 @@ void number_placement(string* val){
             val[i] = inp;
             }
     }
+
+
 
 struct slow_print{
     string stream;
@@ -118,13 +123,44 @@ int main(){
     cout << slow_print{"Hello citizen #" + to_string(random) + " of district 20\n",50};
      */
 
-    cout << "enter 10 numbers for your monthly lottery session (0-99)\n";
-    string val[10];
-    string* choices = selectionLoop(val);
+   //  cout << "enter 10 numbers for your monthly lottery session (0-99)\n";
+   // string val[10];
+   // string* choices = selectionLoop(val);
 
+    try{
+    boost::asio::io_context io_ctx;
+    tcp::resolver resolver(io_ctx);
+
+    //how you resolve an arbitrary ip_addr
+    //for 
+    tcp::resolver::results_type endpoints = resolver.resolve("127.0.0.1", "13");
+
+
+    tcp::socket socket(io_ctx);
+
+    boost::asio::connect(socket, endpoints);
+
+    for (;;)
+    {
+      boost::array<char, 128> buf;
+      boost::system::error_code error;
+
+      size_t len = socket.read_some(boost::asio::buffer(buf), error);
+
+      if (error == boost::asio::error::eof)
+        break; // Connection closed cleanly by peer.
+      else if (error)
+        throw boost::system::system_error(error); // Some other error.
+
+      std::cout.write(buf.data(), len);
+    }
+
+    }
+    catch(std::exception& e) {
+        std::cout<< e.what() << std::endl;
+    }
     
     
-
-
+    return 0;
 
 }

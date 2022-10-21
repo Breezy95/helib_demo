@@ -1,39 +1,37 @@
 #include <helib/helib.h>
 #include <helib/binaryArith.h>
 #include <helib/intraSlot.h>
+#include <vector>
 
 using namespace std;
 using namespace helib;
 
 int main() {
-  //create crpyographic primitives
-  //plaintext modulus
+  
   long p= 2;
 
-  //phi(m) - cyclotomic potential
+  
   long m = 4095;
 
-  //hensel lifting ??
+  
   long r = 1;
 
-  //num of cols of key switching matrix ??
+  
   long c = 2;
 
-  //number of bits of modulus chain
   long bits = 500;
 
-  //factorization of m for bootstrapping
+ 
   std::vector<long> mvec = {7,5,9,13};
 
-  //Generating set of Zm* group
+  
   std::vector<long> gens = {2341,3277,911};
 
-//order of previous generators
-//remember generator functions
+
   std::vector<long> ords = {6,4,6};
 
 
-  //create context, like context in pyfhel
+  
 
   helib::Context context = helib::ContextBuilder<helib::BGV>()
   .m(m)
