@@ -1,6 +1,8 @@
 #include <iostream>
 #include <random>
 #include <string>
+#include <fstream>
+
 
 using namespace std;
 
@@ -8,18 +10,22 @@ using namespace std;
 
   public:
 
+  int_LotteryGen(){}
+  
   int_LotteryGen(int amt, int lo, int hi) : gen(random_device{}()),distr(lo,hi) {
     number_gen(amt,lo,hi);
   }
 
-  int_LotteryGen(){
   
-  }
+
+      void clear(){
+        winning_comb.resize(0);
+      }
 
 
 
       vector<string> number_gen(int amount, int low, int high){
-        winning_comb.resize(0);
+        
         for(int i=0;i<amount;i++){
           winning_comb.push_back((to_string(distr(gen))));
         }
@@ -27,7 +33,32 @@ using namespace std;
         return this->winning_comb;
       }
 
-      vector<string> winning_comb;
+/* 
+      void save_current(){
+        if(winning_comb.size() == 0)
+          number_gen(10,0,99);
+        std::ofstream outdata;
+
+        try{
+        outdata.open("current_key_list");
+        winn
+        }
+        catch(std::exception& e){
+          cout << e.what() << endl;
+        }
+         
+        
+        }
+
+        
+      
+      
+
+      void save_to_file(std::string, int lines = 1){
+
+      }
+
+ */      vector<string> winning_comb;
 
   private:
     mt19937 gen;
@@ -39,10 +70,3 @@ using namespace std;
 
 
  
-int main(){
-
-int_LotteryGen lotto(10,0,99);
-cout <<lotto.winning_comb.size() <<endl; 
-
-return 0;
-}

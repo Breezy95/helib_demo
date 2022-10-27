@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/helibdemo.dir/client.cpp.o"
+  "CMakeFiles/helibdemo.dir/helib_func.cpp.o"
   "helibdemo"
   "helibdemo.pdb"
 )

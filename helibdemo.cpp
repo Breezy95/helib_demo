@@ -1,6 +1,7 @@
 #include <helib/helib.h>
 #include <helib/binaryArith.h>
 #include <helib/intraSlot.h>
+#include <NTL/BasicThreadPool.h>
 #include <vector>
 
 using namespace std;

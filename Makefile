@@ -67,10 +67,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/fabreezy/helib_demo
+CMAKE_SOURCE_DIR = /home/fabreezy/Documents/Projects/helib_demo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/fabreezy/helib_demo
+CMAKE_BINARY_DIR = /home/fabreezy/Documents/Projects/helib_demo
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -99,9 +99,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fabreezy/helib_demo/CMakeFiles /home/fabreezy/helib_demo//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fabreezy/Documents/Projects/helib_demo/CMakeFiles /home/fabreezy/Documents/Projects/helib_demo//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fabreezy/helib_demo/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fabreezy/Documents/Projects/helib_demo/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -142,32 +142,32 @@ helibdemo/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/helibdemo.dir/build.make CMakeFiles/helibdemo.dir/build
 .PHONY : helibdemo/fast
 
-client.o: client.cpp.o
+helib_func.o: helib_func.cpp.o
 
-.PHONY : client.o
+.PHONY : helib_func.o
 
 # target to build an object file
-client.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/helibdemo.dir/build.make CMakeFiles/helibdemo.dir/client.cpp.o
-.PHONY : client.cpp.o
+helib_func.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/helibdemo.dir/build.make CMakeFiles/helibdemo.dir/helib_func.cpp.o
+.PHONY : helib_func.cpp.o
 
-client.i: client.cpp.i
+helib_func.i: helib_func.cpp.i
 
-.PHONY : client.i
+.PHONY : helib_func.i
 
 # target to preprocess a source file
-client.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/helibdemo.dir/build.make CMakeFiles/helibdemo.dir/client.cpp.i
-.PHONY : client.cpp.i
+helib_func.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/helibdemo.dir/build.make CMakeFiles/helibdemo.dir/helib_func.cpp.i
+.PHONY : helib_func.cpp.i
 
-client.s: client.cpp.s
+helib_func.s: helib_func.cpp.s
 
-.PHONY : client.s
+.PHONY : helib_func.s
 
 # target to generate assembly for a file
-client.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/helibdemo.dir/build.make CMakeFiles/helibdemo.dir/client.cpp.s
-.PHONY : client.cpp.s
+helib_func.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/helibdemo.dir/build.make CMakeFiles/helibdemo.dir/helib_func.cpp.s
+.PHONY : helib_func.cpp.s
 
 # Help Target
 help:
@@ -178,9 +178,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... helibdemo"
-	@echo "... client.o"
-	@echo "... client.i"
-	@echo "... client.s"
+	@echo "... helib_func.o"
+	@echo "... helib_func.i"
+	@echo "... helib_func.s"
 .PHONY : help
 
 

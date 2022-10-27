@@ -107,12 +107,22 @@ string* selectionLoop(string* val){
 
 }
 
+vector<int> convertInputs(string* input){
+    vector<int> output;
+    for(int i=0;i<10;i++){
+        output.push_back(stoi(*input));
+        input++;
+    }
+    return output;
+}
+
 
 int main(){
 
-    /* srand(3454);
+    srand(3454);
     int random = rand()* 1000000;
-    cout << slow_print{"It is the year 2134. Abject poverty, political infighting and self-preservation politics \n have lead to apathy and disillusionment in the public space.",100};
+
+    /* cout << slow_print{"It is the year 2134. Abject poverty, political infighting and self-preservation politics \n have lead to apathy and disillusionment in the public space.",100};
     cout << slow_print{"   \n", 1000};
     cout << slow_print{"You are another citizen, and like every other citizen with no path to economic upheaval", 100};
     cout << slow_print{". . .\n", 500};
@@ -120,47 +130,38 @@ int main(){
     slow_print{"The Lottery\n", 100};
     
     
-    cout << slow_print{"Hello citizen #" + to_string(random) + " of district 20\n",50};
-     */
+    cout << slow_print{"Hello citizen #" + to_string(random) + " of district 20\n",50}; */
+    
 
-   //  cout << "enter 10 numbers for your monthly lottery session (0-99)\n";
-   // string val[10];
-   // string* choices = selectionLoop(val);
+    //cout << "enter 10 numbers for your monthly lottery session from 0 to 99. Order WILL matter!\n";
+    //string val[10];
+    //string* choices = selectionLoop(val);
+    
+    
+    //now encrypt ints
 
+    vector<int> test = {0,1,2,3,4,5,6,68,8,9};
+    
     try{
     boost::asio::io_context io_ctx;
     tcp::resolver resolver(io_ctx);
 
     //how you resolve an arbitrary ip_addr
-    //for 
-    tcp::resolver::results_type endpoints = resolver.resolve("127.0.0.1", "13");
+    tcp::resolver::results_type endpoints = resolver.resolve("127.0.0.1", "1337");
 
 
     tcp::socket socket(io_ctx);
 
     boost::asio::connect(socket, endpoints);
-
-    for (;;)
-    {
-      boost::array<char, 128> buf;
-      boost::system::error_code error;
-
-      size_t len = socket.read_some(boost::asio::buffer(buf), error);
-
-      if (error == boost::asio::error::eof)
-        break; // Connection closed cleanly by peer.
-      else if (error)
-        throw boost::system::system_error(error); // Some other error.
-
-      std::cout.write(buf.data(), len);
-    }
-
+    boost::system::error_code err;
+    size_t len = boost::asio::write(socket, boost::asio::buffer(test), err);
+    
     }
     catch(std::exception& e) {
         std::cout<< e.what() << std::endl;
     }
     
-    
+     
     return 0;
 
 }

@@ -7,6 +7,6 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 ## Require full C++ standard
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 project(HELibDemo VERSION 1.0)
-add_executable(helibdemo client.cpp)
+add_executable(helibdemo helib_func.cpp)
 find_package(helib ${HELIB_VERSION} REQUIRED)
 target_link_libraries(helibdemo helib)

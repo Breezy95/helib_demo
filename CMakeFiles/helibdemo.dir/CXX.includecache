@@ -6,22 +6,16 @@
 
 #IncludeRegexTransform: 
 
-/home/fabreezy/helib_demo/client.cpp
+/home/fabreezy/Documents/Projects/helib_demo/helib_func.cpp
 iostream
 -
-stdio.h
--
-thread
--
-chrono
--
-time.h
--
-string
--
-algorithm
--
 helib/helib.h
+-
+helib/EncryptedArray.h
+-
+NTL/BasicThreadPool.h
+-
+vector
 -
 
 /usr/local/helib_pack/include/NTL/ALL_FEATURES.h
@@ -56,6 +50,22 @@ NTL/HAVE_POSIX_TIME.h
 NTL/HAVE_AES_NI.h
 -
 NTL/HAVE_KMA.h
+-
+
+/usr/local/helib_pack/include/NTL/BasicThreadPool.h
+NTL/tools.h
+-
+NTL/vector.h
+-
+NTL/SmartPtr.h
+-
+NTL/thread.h
+-
+thread
+-
+condition_variable
+-
+exception
 -
 
 /usr/local/helib_pack/include/NTL/FFT.h

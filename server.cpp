@@ -5,7 +5,10 @@
 #include <boost/bind/bind.hpp>
 #include <boost/thread/thread.hpp>
 #include <boost/shared_ptr.hpp>
+#include <boost/array.hpp>
+#include <string_view>
 #include <boost/enable_shared_from_this.hpp>
+#include "helib_fun"
 
 
 
@@ -17,7 +20,7 @@ std::string curr_time(){
     time_t now = time(0);
     return ctime(&now);
 }
-
+/* 
 class tcp_connection : public boost::enable_shared_from_this<tcp_connection> {
 
   public:
@@ -47,6 +50,8 @@ class tcp_connection : public boost::enable_shared_from_this<tcp_connection> {
 
     void handle_write()
     {
+      
+
     }
 
     tcp::socket socket_;
@@ -84,16 +89,56 @@ class tcp_server{
 };
 
 
+ */
 
 
 
 
+void print(const boost::system::error_code& /*e*/, boost::asio::steady_timer* t, int* count)
+{
+  if(*count <5){
+    std::cout<< "Hello" <<std::endl;
+    *count ++;
+    t ->expires_at(t -> expiry() + boost::asio::chrono::seconds(1));
+    t->async_wait(boost::bind(print,boost::asio::placeholders::error, t, count));
+  }
+}
+ 
 
+int main()
+{
+   
+   try{
+    boost::asio::io_context io;
+    tcp::acceptor acceptor(io, tcp::endpoint(tcp::v4(), 1337));
 
+    for(;;){
+      tcp::socket sock(io);
+      acceptor.accept(sock);
+      
+      boost::array<int, 10> buf;
+      boost::system::error_code error;
 
+      size_t len = sock.read_some(boost::asio::buffer(buf), error);
+      if (error == boost::asio::error::eof)
+        break; // Connection closed cleanly by peer.
+      else if (error)
+        throw boost::system::system_error(error); // Some other error.
 
-int main(){
-  try{
+     std::cout<< "buffer message has size of: " <<buf.size() << std::endl;
+     std::cout << "these are the entries" <<std::endl;
+     for(int i=0;i<buf.size();i++){
+      std::cout << "entry num: "<< i << " " << buf[i]<< std::endl;
+     }
+    }
+  }
+   catch( std::exception& e){
+    std::cerr << e.what() << std::endl;
+   }
+ 
+  return 0;
+}
+  /* try{
     
     boost::asio::io_context io_context;
     tcp_server server(io_context);
@@ -103,7 +148,7 @@ int main(){
     std::cerr << e.what() <<std::endl;
   }
   
-  return 0;
+  return 0; */
 
 
     /*  synchronous server 
@@ -127,6 +172,6 @@ int main(){
    //g++ -o server_test server.cpp -L include/boost -lpthread to compile
 
   
-}
+
 
 
