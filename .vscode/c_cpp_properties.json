@@ -8,6 +8,8 @@
                 "/usr/local/helib_pack/include/helib/**",
                 "${workspaceFolder}/include/**",
                 "/usr/local/helib_pack/include",
+                "/usr/local/helib_pack/include",
+                "/usr/local/helib_pack/include",
                 "/usr/local/helib_pack/include"
             ],
             "defines": [],

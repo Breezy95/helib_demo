@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/fabreezy/Documents/Projects/helib_demo/helib_func.cpp
+/home/fabreezy/helib_demo/helib_func.cpp
 iostream
 -
 helib/helib.h

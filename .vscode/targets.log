@@ -6,20 +6,22 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Oct 26 14:08:48 2022
+# Make data base, printed on Fri Oct 28 23:48:10 2022
 
 # Variables
 
 # environment
 LC_ALL = C
 # environment
-WSLENV = VSCODE_WSL_EXT_LOCATION/up
+WSLENV = ELECTRON_RUN_AS_NODE/w:
 # environment
-VSCODE_CWD = /mnt/c/Users/Fabrice Benoit/AppData/Local/Programs/Microsoft VS Code
+VSCODE_CWD = /mnt/c/Users/fabri/AppData/Local/Programs/Microsoft VS Code
 # default
 MAKE_COMMAND := make
 # environment
 VSCODE_HANDLES_SIGPIPE = true
+# environment
+GOPATH = /home/fabreezy/work
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
@@ -27,7 +29,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
 .VARIABLES := 
 # environment
-PWD = /home/fabreezy/Documents/Projects/helib_demo
+PWD = /home/fabreezy/helib_demo
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # automatic
@@ -45,7 +47,7 @@ CMAKE_COMMAND = /usr/bin/cmake
 # makefile
 MAKEFLAGS = pqrR
 # makefile
-CURDIR := /home/fabreezy/Documents/Projects/helib_demo
+CURDIR := /home/fabreezy/helib_demo
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # automatic
@@ -79,13 +81,13 @@ SHELL = /bin/sh
 # default
 MAKECMDGOALS := all
 # environment
-SHLVL = 0
+SHLVL = 1
 # environment
 MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = /home/fabreezy/.vscode-server/bin/d045a5eda657f4d7b676dedbfa7aab8207f8a075/bin/remote-cli:/home/fabreezy/.local/bin:/home/fabreezy/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/VMware/VMware Player/bin/:/mnt/c/Program Files (x86)/AdoptOpenJDK/jdk-11.0.10.9-hotspot/bin:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/f/Program Files/Putty/:/mnt/f/Fabrice HDD/Documents/ffmpeg-2021-03-16-git-9383885c0d-full_build/bin:/mnt/f/Mingw/bin:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files/Go/bin:/mnt/c/Users/Fabrice Benoit/AppData/Local/Microsoft/WindowsApps:/mnt/f/Program Files(x86)/Nmap:/mnt/c/Program Files/JetBrains/IntelliJ IDEA Community Edition 2021.1/bin:/mnt/c/Users/Fabrice Benoit/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/Fabrice Benoit/.dotnet/tools:/mnt/c/Users/Fabrice Benoit/AppData/Roaming/npm:/mnt/c/Users/Fabrice Benoit/go/bin:/mnt/c/msys64/mingw64/bin:/usr/local/go/bin
+PATH = /home/fabreezy/.vscode-server/bin/d045a5eda657f4d7b676dedbfa7aab8207f8a075/bin/remote-cli:/home/fabreezy/.local/bin:/home/fabreezy/bin:/home/fabreezy/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/Program Files/WindowsApps/TheDebianProject.DebianGNULinux_1.13.0.0_x64__76v4gfsz19hv4:/mnt/c/Program Files/Eclipse Adoptium/jdk-11.0.14.101-hotspot/bin:/mnt/c/Program Files (x86)/Eclipse Adoptium/jdk-11.0.14.101-hotspot/bin:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/dotnet/:/mnt/c/msys64/mingw64/bin:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Program Files/PuTTY/:/mnt/c/Users/fabri/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/fabri/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files (x86)/mitmproxy/bin:/usr/local/go/bin:/home/fabreezy/go/bin:/usr/local/go-1.17.5/bin:/home/fabreezy/work/bin
 # default
 MAKEFILES := 
 # automatic
@@ -93,15 +95,13 @@ MAKEFILES :=
 # automatic
 ?F = $(notdir $?)
 # environment
-NAME = DESKTOP-960VJI1
+NAME = Code
 # environment
 HOSTTYPE = x86_64
 # environment
 LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
 # automatic
 +F = $(notdir $+)
-# environment
-WSL_INTEROP = /run/WSL/16037_interop
 # 'override' directive
 GNUMAKEFLAGS := 
 # makefile (from 'Makefile', line 67)
@@ -109,7 +109,7 @@ EQUALS = =
 # environment
 LOGNAME = fabreezy
 # environment
-VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/Fabrice Benoit/.vscode/extensions/ms-vscode-remote.remote-wsl-0.72.0
+VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/fabri/.vscode/extensions/ms-vscode-remote.remote-wsl-0.72.0
 # makefile
 .DEFAULT_GOAL := default_target
 # makefile (from 'Makefile', line 64)
@@ -121,9 +121,9 @@ MAKE_VERSION := 4.3
 # makefile (from 'Makefile', line 44)
 MAKESILENT = -s
 # environment
-_ = /home/fabreezy/.vscode-server/bin/d045a5eda657f4d7b676dedbfa7aab8207f8a075/node
+_ = /mnt/c/Users/fabri/AppData/Local/Programs/Microsoft VS Code/bin/code
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-efa82f34-bbb2-4534-882a-20f44baf300e.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-fcc0e94e-dcbb-4e41-a6ae-272d5d0bd832.sock
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -153,9 +153,9 @@ WSL_DISTRO_NAME = Debian
 
 # RCS: could not be stat'd.
 # SCCS: could not be stat'd.
-# . (device 2064, inode 213414): 27 files, no impossibilities.
+# . (device 2, inode 18858823439640560): 24 files, no impossibilities.
 
-# 27 files, no impossibilities in 3 directories.
+# 24 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
@@ -205,7 +205,7 @@ edit_cache/fast: edit_cache
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-10-24 18:29:26.01
+#  Last modified 2022-10-28 16:50:40.7356843
 #  File has been updated.
 #  Successfully updated.
 
@@ -275,7 +275,6 @@ helibdemo/fast:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
- 
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 142):
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/helibdemo.dir/build.make CMakeFiles/helibdemo.dir/build
@@ -419,12 +418,12 @@ cmake_check_build_system:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 65 / storage = 757 B / avg = 11 B
-# current buf: size = 8162 B / used = 757 B / count = 65 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 63 / storage = 707 B / avg = 11 B
+# current buf: size = 8162 B / used = 707 B / count = 63 / avg = 11 B
 
-# strcache performance: lookups = 179 / hit rate = 63%
+# strcache performance: lookups = 176 / hit rate = 64%
 # hash-table stats:
-# Load=65/8192=1%, Rehash=0, Collisions=0/179=0%
-# Finished Make data base on Wed Oct 26 14:08:48 2022
+# Load=63/8192=1%, Rehash=0, Collisions=0/176=0%
+# Finished Make data base on Fri Oct 28 23:48:10 2022
 
  

@@ -34,7 +34,7 @@ int main() {
 
   
 
-  helib::Context context = helib::ContextBuilder<helib::BGV>()
+  helib::Context* context = helib::ContextBuilder<helib::BGV>()
   .m(m)
   .p(p)
   .r(r)
@@ -44,8 +44,13 @@ int main() {
   .c(c)
   .mvec(mvec)
   .bootstrappable(true)
-  .build();
+  .buildPtr();
 
+cout << *context.getM();
+
+return 0;
+}
+/* 
   context.printout();
 
   cout << "Security level: " << context.securityLevel() << endl;
@@ -145,7 +150,7 @@ helib::multTwoNumbers( product_wrapper, helib::CtPtrs_vectorCt(encrypted_a), hel
 );
 
 vector<long> decrypted_prod;
-
+ */
 
   
 

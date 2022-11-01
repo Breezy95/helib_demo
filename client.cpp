@@ -139,8 +139,10 @@ int main(){
     
     
     //now encrypt ints
+    //0 - 99 in binary is 0b0 - 0b1100011, maximum bit size is 7
 
     vector<int> test = {0,1,2,3,4,5,6,68,8,9};
+
     
     try{
     boost::asio::io_context io_ctx;
