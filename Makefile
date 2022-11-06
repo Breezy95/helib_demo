@@ -67,24 +67,13 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/fabreezy/helib_demo
+CMAKE_SOURCE_DIR = /home/fabreezy/Documents/Projects/helib_demo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/fabreezy/helib_demo
+CMAKE_BINARY_DIR = /home/fabreezy/Documents/Projects/helib_demo
 
 #=============================================================================
 # Targets provided globally by CMake.
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -97,11 +86,22 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fabreezy/helib_demo/CMakeFiles /home/fabreezy/helib_demo//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fabreezy/Documents/Projects/helib_demo/CMakeFiles /home/fabreezy/Documents/Projects/helib_demo//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fabreezy/helib_demo/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fabreezy/Documents/Projects/helib_demo/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -130,44 +130,84 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named helibdemo
+# Target rules for targets named server_test
 
 # Build rule for target.
-helibdemo: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 helibdemo
-.PHONY : helibdemo
+server_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 server_test
+.PHONY : server_test
 
 # fast build rule for target.
-helibdemo/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/helibdemo.dir/build.make CMakeFiles/helibdemo.dir/build
-.PHONY : helibdemo/fast
+server_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/build
+.PHONY : server_test/fast
 
-helib_func.o: helib_func.cpp.o
+#=============================================================================
+# Target rules for targets named client_test
 
-.PHONY : helib_func.o
+# Build rule for target.
+client_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 client_test
+.PHONY : client_test
+
+# fast build rule for target.
+client_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client_test.dir/build.make CMakeFiles/client_test.dir/build
+.PHONY : client_test/fast
+
+client.o: client.cpp.o
+
+.PHONY : client.o
 
 # target to build an object file
-helib_func.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/helibdemo.dir/build.make CMakeFiles/helibdemo.dir/helib_func.cpp.o
-.PHONY : helib_func.cpp.o
+client.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client_test.dir/build.make CMakeFiles/client_test.dir/client.cpp.o
+.PHONY : client.cpp.o
 
-helib_func.i: helib_func.cpp.i
+client.i: client.cpp.i
 
-.PHONY : helib_func.i
+.PHONY : client.i
 
 # target to preprocess a source file
-helib_func.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/helibdemo.dir/build.make CMakeFiles/helibdemo.dir/helib_func.cpp.i
-.PHONY : helib_func.cpp.i
+client.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client_test.dir/build.make CMakeFiles/client_test.dir/client.cpp.i
+.PHONY : client.cpp.i
 
-helib_func.s: helib_func.cpp.s
+client.s: client.cpp.s
 
-.PHONY : helib_func.s
+.PHONY : client.s
 
 # target to generate assembly for a file
-helib_func.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/helibdemo.dir/build.make CMakeFiles/helibdemo.dir/helib_func.cpp.s
-.PHONY : helib_func.cpp.s
+client.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client_test.dir/build.make CMakeFiles/client_test.dir/client.cpp.s
+.PHONY : client.cpp.s
+
+server.o: server.cpp.o
+
+.PHONY : server.o
+
+# target to build an object file
+server.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/server.cpp.o
+.PHONY : server.cpp.o
+
+server.i: server.cpp.i
+
+.PHONY : server.i
+
+# target to preprocess a source file
+server.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/server.cpp.i
+.PHONY : server.cpp.i
+
+server.s: server.cpp.s
+
+.PHONY : server.s
+
+# target to generate assembly for a file
+server.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/server.cpp.s
+.PHONY : server.cpp.s
 
 # Help Target
 help:
@@ -177,10 +217,14 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... helibdemo"
-	@echo "... helib_func.o"
-	@echo "... helib_func.i"
-	@echo "... helib_func.s"
+	@echo "... client_test"
+	@echo "... server_test"
+	@echo "... client.o"
+	@echo "... client.i"
+	@echo "... client.s"
+	@echo "... server.o"
+	@echo "... server.i"
+	@echo "... server.s"
 .PHONY : help
 
 

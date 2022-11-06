@@ -1,3 +1,4 @@
-/home/fabreezy/helib_demo/CMakeFiles/edit_cache.dir
-/home/fabreezy/helib_demo/CMakeFiles/rebuild_cache.dir
-/home/fabreezy/helib_demo/CMakeFiles/helibdemo.dir
+/home/fabreezy/Documents/Projects/helib_demo/CMakeFiles/rebuild_cache.dir
+/home/fabreezy/Documents/Projects/helib_demo/CMakeFiles/edit_cache.dir
+/home/fabreezy/Documents/Projects/helib_demo/CMakeFiles/server_test.dir
+/home/fabreezy/Documents/Projects/helib_demo/CMakeFiles/client_test.dir

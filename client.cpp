@@ -5,12 +5,24 @@
 #include <time.h>
 #include <string>
 #include <algorithm>
+
 #include <boost/asio.hpp>
 #include <boost/array.hpp>
-//#include <helib/helib.h>
 
+#include <helib/JsonWrapper.h>
+#include <helib/helib.h>
+
+#include "helib/binio.h"
+#include "header_f/json.hpp"
+#include "helib_func.hpp"
+
+
+#include <fstream>
 using namespace std;
+using json = ::nlohmann::json;
 using boost::asio::ip::tcp;
+
+
 
 
 void number_placement(string* val){
@@ -117,33 +129,91 @@ vector<int> convertInputs(string* input){
 }
 
 
+
+//1: save, 2: load
+//return 1 on success, 0 on  fail
+
+
+
+
+
+
+
+
+
 int main(){
 
     srand(3454);
-    int random = rand()* 1000000;
-
-    /* cout << slow_print{"It is the year 2134. Abject poverty, political infighting and self-preservation politics \n have lead to apathy and disillusionment in the public space.",100};
-    cout << slow_print{"   \n", 1000};
-    cout << slow_print{"You are another citizen, and like every other citizen with no path to economic upheaval", 100};
-    cout << slow_print{". . .\n", 500};
-    cout << slow_print{"You play a fools game.", 100} << slow_print{"\n",1500} << 
-    slow_print{"The Lottery\n", 100};
-    
-    
-    cout << slow_print{"Hello citizen #" + to_string(random) + " of district 20\n",50}; */
     
 
-    //cout << "enter 10 numbers for your monthly lottery session from 0 to 99. Order WILL matter!\n";
-    //string val[10];
-    //string* choices = selectionLoop(val);
     
-    
-    //now encrypt ints
-    //0 - 99 in binary is 0b0 - 0b1100011, maximum bit size is 7
 
     vector<int> test = {0,1,2,3,4,5,6,68,8,9};
 
+   long p= 2;
+  long m = 4095;
+  long r = 1;
+  long c = 2;
+  long bits = 500;
+  std::vector<long> mvec = {7,5,9,13};
+  std::vector<long> gens = {2341,3277,911};
+  std::vector<long> ords = {6,4,6};
+
+  helib::Context hel_context = helib::ContextBuilder<helib::BGV>()
+  .m(m)
+  .p(p)
+  .r(r)
+  .gens(gens)
+  .ords(ords)
+  .bits(bits)
+  .c(c)
+  .mvec(mvec)
+  .bootstrappable(true)
+  .build();
+
+  helib::SecKey secret_key(hel_context);
+  // Generate the secret key
+  secret_key.GenSecKey();
+  std::cout << "Generating key-switching matrices..." << std::endl;
+  // Compute key-switching matrices that we need
+  helib::addSome1DMatrices(secret_key);
+
+  const helib::PubKey& public_key = secret_key;
+
+  // Get the EncryptedArray of the context
+  const helib::EncryptedArray& ea = hel_context.getEA();
+
+  // Get the number of slot (phi(m))
+  long nslots = ea.size();
+  std::cout << "Number of slots: " << nslots << std::endl;
+
+  // Create a vector of long with nslots elements
+  helib::Ptxt<helib::BGV> ptxt(hel_context);
+
     
+
+
+    for(int i=0;i<ptxt.size();i++){
+        ptxt[i] = test[i];
+    }
+
+
+    helib::Ctxt ctxt(public_key);
+
+    public_key.Encrypt(ctxt, ptxt);
+ 
+
+    
+    
+    boost::asio::streambuf strBuf;
+    std::ostream outStr(&strBuf);
+    
+    hel_context.writeTo(outStr); //ptxt.writeToJSON();
+    
+
+
+    //send context, public key, and then vector
+
     try{
     boost::asio::io_context io_ctx;
     tcp::resolver resolver(io_ctx);
@@ -156,14 +226,18 @@ int main(){
 
     boost::asio::connect(socket, endpoints);
     boost::system::error_code err;
-    size_t len = boost::asio::write(socket, boost::asio::buffer(test), err);
+    //boost::asio::buffer
+    size_t len = boost::asio::write(socket, boost::asio::buffer(strBuf.data()), err);
+
+    std::cout << "size of message: " << len << std::endl;
+    
     
     }
     catch(std::exception& e) {
         std::cout<< e.what() << std::endl;
     }
     
-     
+    std::cout <<"end of client" << std::endl;
     return 0;
 
-}
+    }

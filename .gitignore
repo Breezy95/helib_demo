@@ -1,6 +1,6 @@
 #directories
 CmakeFiles/
-
+build/
 
 #files
 cmake_install.cmake

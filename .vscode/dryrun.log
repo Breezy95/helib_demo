@@ -1,22 +1,39 @@
 make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/fabreezy/helib_demo'
+make: Entering directory '/home/fabreezy/Documents/Projects/helib_demo'
 /usr/bin/cmake -S/home/fabreezy/Documents/Projects/helib_demo -B/home/fabreezy/Documents/Projects/helib_demo --check-build-system CMakeFiles/Makefile.cmake 0
 /usr/bin/cmake -E cmake_progress_start /home/fabreezy/Documents/Projects/helib_demo/CMakeFiles /home/fabreezy/Documents/Projects/helib_demo//CMakeFiles/progress.marks
 make -s -f CMakeFiles/Makefile2 all
-make[1]: Entering directory '/home/fabreezy/helib_demo'
-make -s -f CMakeFiles/helibdemo.dir/build.make CMakeFiles/helibdemo.dir/depend
-make[2]: Entering directory '/home/fabreezy/helib_demo'
-cd /home/fabreezy/Documents/Projects/helib_demo && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/fabreezy/Documents/Projects/helib_demo /home/fabreezy/Documents/Projects/helib_demo /home/fabreezy/Documents/Projects/helib_demo /home/fabreezy/Documents/Projects/helib_demo /home/fabreezy/Documents/Projects/helib_demo/CMakeFiles/helibdemo.dir/DependInfo.cmake --color=
-make[2]: Leaving directory '/home/fabreezy/helib_demo'
-make -s -f CMakeFiles/helibdemo.dir/build.make CMakeFiles/helibdemo.dir/build
-make[2]: Entering directory '/home/fabreezy/helib_demo'
-/usr/bin/cmake -E cmake_echo_color --switch= --green --progress-dir=/home/fabreezy/Documents/Projects/helib_demo/CMakeFiles --progress-num=1 "Building CXX object CMakeFiles/helibdemo.dir/helib_func.cpp.o"
-/usr/bin/c++ -DHELIB_BOOT_THREADS -DHELIB_THREADS -isystem /usr/local/helib_pack/include -std=c++17 -o CMakeFiles/helibdemo.dir/helib_func.cpp.o -c /home/fabreezy/Documents/Projects/helib_demo/helib_func.cpp
-/usr/bin/cmake -E cmake_echo_color --switch= --green --bold --progress-dir=/home/fabreezy/Documents/Projects/helib_demo/CMakeFiles --progress-num=2 "Linking CXX executable helibdemo"
-/usr/bin/cmake -E cmake_link_script CMakeFiles/helibdemo.dir/link.txt --verbose=
-make[2]: Leaving directory '/home/fabreezy/helib_demo'
-/usr/bin/cmake -E cmake_echo_color --switch= --progress-dir=/home/fabreezy/Documents/Projects/helib_demo/CMakeFiles --progress-num=1,2 "Built target helibdemo"
-make[1]: Leaving directory '/home/fabreezy/helib_demo'
+make[1]: Entering directory '/home/fabreezy/Documents/Projects/helib_demo'
+make -s -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/depend
+ 
+make[2]: Entering directory '/home/fabreezy/Documents/Projects/helib_demo'
+cd /home/fabreezy/Documents/Projects/helib_demo && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/fabreezy/Documents/Projects/helib_demo /home/fabreezy/Documents/Projects/helib_demo /home/fabreezy/Documents/Projects/helib_demo /home/fabreezy/Documents/Projects/helib_demo /home/fabreezy/Documents/Projects/helib_demo/CMakeFiles/server_test.dir/DependInfo.cmake --color=
+make[2]: Leaving directory '/home/fabreezy/Documents/Projects/helib_demo'
+make -s -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/build
+ 
+make[2]: Entering directory '/home/fabreezy/Documents/Projects/helib_demo'
+/usr/bin/cmake -E cmake_echo_color --switch= --green --progress-dir=/home/fabreezy/Documents/Projects/helib_demo/CMakeFiles --progress-num=3 "Building CXX object CMakeFiles/server_test.dir/server.cpp.o"
+/usr/bin/c++ -DHELIB_BOOT_THREADS -DHELIB_THREADS -isystem /usr/local/helib_pack/include -std=c++17 -o CMakeFiles/server_test.dir/server.cpp.o -c /home/fabreezy/Documents/Projects/helib_demo/server.cpp
+ 
+/usr/bin/cmake -E cmake_echo_color --switch= --green --bold --progress-dir=/home/fabreezy/Documents/Projects/helib_demo/CMakeFiles --progress-num=4 "Linking CXX executable server_test"
+/usr/bin/cmake -E cmake_link_script CMakeFiles/server_test.dir/link.txt --verbose=
+make[2]: Leaving directory '/home/fabreezy/Documents/Projects/helib_demo'
+/usr/bin/cmake -E cmake_echo_color --switch= --progress-dir=/home/fabreezy/Documents/Projects/helib_demo/CMakeFiles --progress-num=3,4 "Built target server_test"
+make -s -f CMakeFiles/client_test.dir/build.make CMakeFiles/client_test.dir/depend
+ 
+make[2]: Entering directory '/home/fabreezy/Documents/Projects/helib_demo'
+cd /home/fabreezy/Documents/Projects/helib_demo && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/fabreezy/Documents/Projects/helib_demo /home/fabreezy/Documents/Projects/helib_demo /home/fabreezy/Documents/Projects/helib_demo /home/fabreezy/Documents/Projects/helib_demo /home/fabreezy/Documents/Projects/helib_demo/CMakeFiles/client_test.dir/DependInfo.cmake --color=
+make[2]: Leaving directory '/home/fabreezy/Documents/Projects/helib_demo'
+make -s -f CMakeFiles/client_test.dir/build.make CMakeFiles/client_test.dir/build
+ 
+make[2]: Entering directory '/home/fabreezy/Documents/Projects/helib_demo'
+/usr/bin/cmake -E cmake_echo_color --switch= --green --progress-dir=/home/fabreezy/Documents/Projects/helib_demo/CMakeFiles --progress-num=1 "Building CXX object CMakeFiles/client_test.dir/client.cpp.o"
+/usr/bin/c++ -DHELIB_BOOT_THREADS -DHELIB_THREADS -isystem /usr/local/helib_pack/include -std=c++17 -o CMakeFiles/client_test.dir/client.cpp.o -c /home/fabreezy/Documents/Projects/helib_demo/client.cpp
+/usr/bin/cmake -E cmake_echo_color --switch= --green --bold --progress-dir=/home/fabreezy/Documents/Projects/helib_demo/CMakeFiles --progress-num=2 "Linking CXX executable client_test"
+/usr/bin/cmake -E cmake_link_script CMakeFiles/client_test.dir/link.txt --verbose=
+make[2]: Leaving directory '/home/fabreezy/Documents/Projects/helib_demo'
+/usr/bin/cmake -E cmake_echo_color --switch= --progress-dir=/home/fabreezy/Documents/Projects/helib_demo/CMakeFiles --progress-num=1,2 "Built target client_test"
+make[1]: Leaving directory '/home/fabreezy/Documents/Projects/helib_demo'
 /usr/bin/cmake -E cmake_progress_start /home/fabreezy/Documents/Projects/helib_demo/CMakeFiles 0
-make: Leaving directory '/home/fabreezy/helib_demo'
+make: Leaving directory '/home/fabreezy/Documents/Projects/helib_demo'
  

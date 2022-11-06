@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Oct 28 23:48:10 2022
+# Make data base, printed on Sun Nov  6 13:16:51 2022
 
 # Variables
 
@@ -15,13 +15,11 @@ LC_ALL = C
 # environment
 WSLENV = ELECTRON_RUN_AS_NODE/w:
 # environment
-VSCODE_CWD = /mnt/c/Users/fabri/AppData/Local/Programs/Microsoft VS Code
+VSCODE_CWD = /mnt/c/Users/Fabrice Benoit/AppData/Local/Programs/Microsoft VS Code
 # default
 MAKE_COMMAND := make
 # environment
 VSCODE_HANDLES_SIGPIPE = true
-# environment
-GOPATH = /home/fabreezy/work
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
@@ -29,7 +27,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
 .VARIABLES := 
 # environment
-PWD = /home/fabreezy/helib_demo
+PWD = /home/fabreezy/Documents/Projects/helib_demo
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # automatic
@@ -47,7 +45,7 @@ CMAKE_COMMAND = /usr/bin/cmake
 # makefile
 MAKEFLAGS = pqrR
 # makefile
-CURDIR := /home/fabreezy/helib_demo
+CURDIR := /home/fabreezy/Documents/Projects/helib_demo
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # automatic
@@ -87,7 +85,7 @@ MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = /home/fabreezy/.vscode-server/bin/d045a5eda657f4d7b676dedbfa7aab8207f8a075/bin/remote-cli:/home/fabreezy/.local/bin:/home/fabreezy/bin:/home/fabreezy/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/Program Files/WindowsApps/TheDebianProject.DebianGNULinux_1.13.0.0_x64__76v4gfsz19hv4:/mnt/c/Program Files/Eclipse Adoptium/jdk-11.0.14.101-hotspot/bin:/mnt/c/Program Files (x86)/Eclipse Adoptium/jdk-11.0.14.101-hotspot/bin:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/dotnet/:/mnt/c/msys64/mingw64/bin:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Program Files/PuTTY/:/mnt/c/Users/fabri/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/fabri/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files (x86)/mitmproxy/bin:/usr/local/go/bin:/home/fabreezy/go/bin:/usr/local/go-1.17.5/bin:/home/fabreezy/work/bin
+PATH = /home/fabreezy/.vscode-server/bin/8fa188b2b301d36553cbc9ce1b0a146ccb93351f/bin/remote-cli:/home/fabreezy/.local/bin:/home/fabreezy/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/WindowsApps/TheDebianProject.DebianGNULinux_1.13.0.0_x64__76v4gfsz19hv4:/mnt/c/Program Files (x86)/VMware/VMware Player/bin/:/mnt/c/Program Files (x86)/AdoptOpenJDK/jdk-11.0.10.9-hotspot/bin:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/f/Program Files/Putty/:/mnt/f/Fabrice HDD/Documents/ffmpeg-2021-03-16-git-9383885c0d-full_build/bin:/mnt/f/Mingw/bin:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files/Go/bin:/mnt/c/Users/Fabrice Benoit/AppData/Local/Microsoft/WindowsApps:/mnt/f/Program Files(x86)/Nmap:/mnt/c/Program Files/JetBrains/IntelliJ IDEA Community Edition 2021.1/bin:/mnt/c/Users/Fabrice Benoit/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/Fabrice Benoit/.dotnet/tools:/mnt/c/Users/Fabrice Benoit/AppData/Roaming/npm:/mnt/c/Users/Fabrice Benoit/go/bin:/mnt/c/msys64/mingw64/bin:/usr/local/go/bin
 # default
 MAKEFILES := 
 # automatic
@@ -102,6 +100,8 @@ HOSTTYPE = x86_64
 LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
 # automatic
 +F = $(notdir $+)
+# environment
+WSL_INTEROP = /run/WSL/10_interop
 # 'override' directive
 GNUMAKEFLAGS := 
 # makefile (from 'Makefile', line 67)
@@ -109,7 +109,7 @@ EQUALS = =
 # environment
 LOGNAME = fabreezy
 # environment
-VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/fabri/.vscode/extensions/ms-vscode-remote.remote-wsl-0.72.0
+VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/Fabrice Benoit/.vscode/extensions/ms-vscode-remote.remote-wsl-0.72.0
 # makefile
 .DEFAULT_GOAL := default_target
 # makefile (from 'Makefile', line 64)
@@ -121,9 +121,9 @@ MAKE_VERSION := 4.3
 # makefile (from 'Makefile', line 44)
 MAKESILENT = -s
 # environment
-_ = /mnt/c/Users/fabri/AppData/Local/Programs/Microsoft VS Code/bin/code
+_ = /mnt/c/Users/Fabrice Benoit/AppData/Local/Programs/Microsoft VS Code/bin/code
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-fcc0e94e-dcbb-4e41-a6ae-272d5d0bd832.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-1a31bee6-4f4d-4d40-a877-48302ef97342.sock
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -153,9 +153,9 @@ WSL_DISTRO_NAME = Debian
 
 # RCS: could not be stat'd.
 # SCCS: could not be stat'd.
-# . (device 2, inode 18858823439640560): 24 files, no impossibilities.
+# . (device 2064, inode 68099): 29 files, no impossibilities.
 
-# 24 files, no impossibilities in 3 directories.
+# 29 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
@@ -182,15 +182,27 @@ depend:
 #  recipe to execute (from 'Makefile', line 129):
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 
-helibdemo: cmake_check_build_system
+server.cpp.s:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 137):
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 helibdemo
+#  recipe to execute (from 'Makefile', line 209):
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/server.cpp.s
+
+client.o: client.cpp.o
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
 
 default_target: all
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+server.o: server.cpp.o
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
@@ -202,33 +214,57 @@ edit_cache/fast: edit_cache
 #  File does not exist.
 #  File has not been updated.
 
+client.i: client.cpp.i
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+client.cpp.o:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 164):
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client_test.dir/build.make CMakeFiles/client_test.dir/client.cpp.o
+
+client_test: cmake_check_build_system
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 150):
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 client_test
+
+server.s: server.cpp.s
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-10-28 16:50:40.7356843
+#  Last modified 2022-11-05 21:54:21.5338274
 #  File has been updated.
 #  Successfully updated.
+
+server.cpp.o:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 191):
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/server.cpp.o
 
 rebuild_cache:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 91):
+#  recipe to execute (from 'Makefile', line 80):
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
 	/usr/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-
-helib_func.s: helib_func.cpp.s
-#  Phony target (prerequisite of .PHONY).
-#  Implicit rule search has not been done.
-#  File does not exist.
-#  File has not been updated.
-
-helib_func.i: helib_func.cpp.i
-#  Phony target (prerequisite of .PHONY).
-#  Implicit rule search has not been done.
-#  File does not exist.
-#  File has not been updated.
 
 .SILENT:
 #  Implicit rule search has not been done.
@@ -240,16 +276,11 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
+ 
 #  recipe to execute (from 'Makefile', line 109):
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 clean
 
 cmake_force:
-#  Phony target (prerequisite of .PHONY).
-#  Implicit rule search has not been done.
-#  File does not exist.
-#  File has not been updated.
-
-helib_func.o: helib_func.cpp.o
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
@@ -263,44 +294,28 @@ preinstall/fast:
 #  recipe to execute (from 'Makefile', line 124):
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
 
-helib_func.cpp.i:
-#  Phony target (prerequisite of .PHONY).
-#  Implicit rule search has not been done.
-#  File does not exist.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 160):
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/helibdemo.dir/build.make CMakeFiles/helibdemo.dir/helib_func.cpp.i
-
-helibdemo/fast:
-#  Phony target (prerequisite of .PHONY).
-#  Implicit rule search has not been done.
-#  File does not exist.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 142):
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/helibdemo.dir/build.make CMakeFiles/helibdemo.dir/build
-
 edit_cache:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 80):
+#  recipe to execute (from 'Makefile', line 91):
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
 	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+
+server.cpp.i:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 200):
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/server.cpp.i
 
 rebuild_cache/fast: rebuild_cache
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-
-helib_func.cpp.s:
-#  Phony target (prerequisite of .PHONY).
-#  Implicit rule search has not been done.
-#  File does not exist.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 169):
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/helibdemo.dir/build.make CMakeFiles/helibdemo.dir/helib_func.cpp.s
 
 # Not a target:
 .hpux_make_needs_suffix_list:
@@ -322,6 +337,14 @@ preinstall: all
 #  Modification time never checked.
 #  File has not been updated.
 
+client_test/fast:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 155):
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client_test.dir/build.make CMakeFiles/client_test.dir/build
+
 all: cmake_check_build_system
 #  Phony target (prerequisite of .PHONY).
 #  Command line target.
@@ -341,17 +364,35 @@ help:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 174):
+#  recipe to execute (from 'Makefile', line 214):
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... helibdemo"
-	@echo "... helib_func.o"
-	@echo "... helib_func.i"
-	@echo "... helib_func.s"
+	@echo "... client_test"
+	@echo "... server_test"
+	@echo "... client.o"
+	@echo "... client.i"
+	@echo "... client.s"
+	@echo "... server.o"
+	@echo "... server.i"
+	@echo "... server.s"
+
+client.s: client.cpp.s
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+server_test: cmake_check_build_system
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 137):
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 server_test
 
 clean/fast: clean
 #  Phony target (prerequisite of .PHONY).
@@ -359,18 +400,26 @@ clean/fast: clean
 #  File does not exist.
 #  File has not been updated.
 
+server_test/fast:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 142):
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server_test.dir/build.make CMakeFiles/server_test.dir/build
+
 .NOTPARALLEL:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-helib_func.cpp.o:
+client.cpp.i:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 151):
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/helibdemo.dir/build.make CMakeFiles/helibdemo.dir/helib_func.cpp.o
+#  recipe to execute (from 'Makefile', line 173):
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client_test.dir/build.make CMakeFiles/client_test.dir/client.cpp.i
 
 cmake_check_build_system:
 #  Phony target (prerequisite of .PHONY).
@@ -397,33 +446,47 @@ cmake_check_build_system:
 # | := 
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/14=7%
-#  recipe to execute (from 'Makefile', line 195):
+#  recipe to execute (from 'Makefile', line 239):
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+
+server.i: server.cpp.i
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
 
 .SUFFIXES: .hpux_make_needs_suffix_list
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-.PHONY: default_target cmake_force edit_cache edit_cache/fast rebuild_cache rebuild_cache/fast all clean clean/fast preinstall preinstall/fast depend helibdemo helibdemo/fast helib_func.o helib_func.cpp.o helib_func.i helib_func.cpp.i helib_func.s helib_func.cpp.s help cmake_check_build_system
+.PHONY: default_target cmake_force rebuild_cache rebuild_cache/fast edit_cache edit_cache/fast all clean clean/fast preinstall preinstall/fast depend server_test server_test/fast client_test client_test/fast client.o client.cpp.o client.i client.cpp.i client.s client.cpp.s server.o server.cpp.o server.i server.cpp.i server.s server.cpp.s help cmake_check_build_system
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
+client.cpp.s:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 182):
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client_test.dir/build.make CMakeFiles/client_test.dir/client.cpp.s
+
 # files hash-table stats:
-# Load=29/1024=3%, Rehash=0, Collisions=0/101=0%
+# Load=37/1024=4%, Rehash=0, Collisions=5/132=4%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 63 / storage = 707 B / avg = 11 B
-# current buf: size = 8162 B / used = 707 B / count = 63 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 74 / storage = 824 B / avg = 11 B
+# current buf: size = 8162 B / used = 824 B / count = 74 / avg = 11 B
 
-# strcache performance: lookups = 176 / hit rate = 64%
+# strcache performance: lookups = 225 / hit rate = 67%
 # hash-table stats:
-# Load=63/8192=1%, Rehash=0, Collisions=0/176=0%
-# Finished Make data base on Fri Oct 28 23:48:10 2022
+# Load=74/8192=1%, Rehash=0, Collisions=0/225=0%
+# Finished Make data base on Sun Nov  6 13:16:51 2022
 
  

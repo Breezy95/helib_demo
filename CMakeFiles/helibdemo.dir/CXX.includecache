@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/fabreezy/helib_demo/helib_func.cpp
+/home/fabreezy/Documents/Projects/helib_demo/helib_func.cpp
 iostream
 -
 helib/helib.h
@@ -14,6 +14,14 @@ helib/helib.h
 helib/EncryptedArray.h
 -
 NTL/BasicThreadPool.h
+-
+vector
+-
+helib_func.hpp
+/home/fabreezy/Documents/Projects/helib_demo/helib_func.hpp
+
+/home/fabreezy/Documents/Projects/helib_demo/helib_func.hpp
+iostream
 -
 vector
 -
