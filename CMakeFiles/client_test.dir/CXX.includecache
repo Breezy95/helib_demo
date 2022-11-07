@@ -33,9 +33,15 @@ helib/binio.h
 /home/fabreezy/Documents/Projects/helib_demo/helib/binio.h
 header_f/json.hpp
 /home/fabreezy/Documents/Projects/helib_demo/header_f/json.hpp
-helib_func.hpp
-/home/fabreezy/Documents/Projects/helib_demo/helib_func.hpp
+header_f/helib_func.hpp
+/home/fabreezy/Documents/Projects/helib_demo/header_f/helib_func.hpp
 fstream
+-
+
+/home/fabreezy/Documents/Projects/helib_demo/header_f/helib_func.hpp
+iostream
+-
+vector
 -
 
 /home/fabreezy/Documents/Projects/helib_demo/header_f/json.hpp
@@ -418,12 +424,6 @@ vector
 any
 -
 string_view
--
-
-/home/fabreezy/Documents/Projects/helib_demo/helib_func.hpp
-iostream
--
-vector
 -
 
 /usr/local/helib_pack/include/NTL/ALL_FEATURES.h

@@ -14,7 +14,7 @@
 
 #include "helib/binio.h"
 #include "header_f/json.hpp"
-#include "helib_func.hpp"
+#include "header_f/helib_func.hpp"
 
 
 #include <fstream>
@@ -126,6 +126,8 @@ vector<int> convertInputs(string* input){
         input++;
     }
     return output;
+
+    
 }
 
 
@@ -208,9 +210,11 @@ int main(){
     boost::asio::streambuf strBuf;
     std::ostream outStr(&strBuf);
     
-    hel_context.writeTo(outStr); //ptxt.writeToJSON();
+    //prepend msg length and operation
+    outStr << "con";
     
-
+    hel_context.writeTo(outStr); 
+    outStr<< "#";
 
     //send context, public key, and then vector
 
@@ -231,6 +235,9 @@ int main(){
 
     std::cout << "size of message: " << len << std::endl;
     
+    //send pubkey
+
+    //send encrypted vector
     
     }
     catch(std::exception& e) {

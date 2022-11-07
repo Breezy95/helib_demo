@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+/home/fabreezy/Documents/Projects/helib_demo/header_f/helib_func.hpp
+iostream
+-
+vector
+-
+
 /home/fabreezy/Documents/Projects/helib_demo/server.cpp
 iostream
 -
@@ -29,6 +35,8 @@ boost/enable_shared_from_this.hpp
 -
 helib/helib.h
 -
+header_f/helib_func.hpp
+/home/fabreezy/Documents/Projects/helib_demo/header_f/helib_func.hpp
 
 /usr/local/helib_pack/include/NTL/ALL_FEATURES.h
 NTL/HAVE_ALIGNED_ARRAY.h
