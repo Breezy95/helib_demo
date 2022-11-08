@@ -180,6 +180,7 @@ int main(){
   // Compute key-switching matrices that we need
   helib::addSome1DMatrices(secret_key);
 
+  //upcasting pub
   const helib::PubKey& public_key = secret_key;
 
   // Get the EncryptedArray of the context
@@ -210,11 +211,24 @@ int main(){
     boost::asio::streambuf strBuf;
     std::ostream outStr(&strBuf);
     
-    //prepend msg length and operation
-    outStr << "con";
     
+    outStr << "con";
+    //public_key.writeTo(outStr);
     hel_context.writeTo(outStr); 
     outStr<< "#";
+
+
+  /* std::ofstream outPublicKeyFile;
+  outPublicKeyFile.open("pkc.json", std::ios::out);
+  if (outPublicKeyFile.is_open()) {
+    // Write the public key to a file
+    public_key.writeToJSON(outPublicKeyFile);
+    // Close the ofstream
+    outPublicKeyFile.close(); 
+  } else {
+    throw std::runtime_error("Could not open file 'pk.json'.");
+  }
+    */
 
     //send context, public key, and then vector
 
@@ -235,7 +249,34 @@ int main(){
 
     std::cout << "size of message: " << len << std::endl;
     
+   
+
     //send pubkey
+    boost::asio::streambuf streBuf;
+    std::ostream outStre(&streBuf);
+    
+    
+    outStre << "pub";
+    public_key.writeToJSON(outStre);
+    
+    outStre<< "#";
+
+    std::ofstream outPublicKeyFile;
+  outPublicKeyFile.open("pk_client.json", std::ios::out);
+  if (outPublicKeyFile.is_open()) {
+    // Write the secret key to a file
+    public_key.writeToJSON(outPublicKeyFile);
+    // Close the ofstream
+    outPublicKeyFile.close();
+  } else {
+    throw std::runtime_error("Could not open file 'pk_client.json'.");
+  }
+
+    
+    len = boost::asio::write(socket, boost::asio::buffer(streBuf.data()), err);
+    std::cout << "length of public key: " << len << std::endl;
+
+    for(;;){}
 
     //send encrypted vector
     

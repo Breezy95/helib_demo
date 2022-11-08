@@ -156,6 +156,7 @@ class tcp_server{
 int main(){
    size_t len;
    helib::Context* server_con;
+   helib::PubKey* public_key;
    try{
     boost::asio::io_context io;
     tcp::acceptor acceptor(io, tcp::endpoint(tcp::v4(), 1337));
@@ -171,8 +172,15 @@ int main(){
 
     for(;;){
       boost::asio::streambuf read_buffer;
-      boost::asio::streambuf::mutable_buffers_type mut_read_buffer = read_buffer.prepare(3);
+     
+      //get msg size
+
       
+      
+      
+      boost::asio::streambuf::mutable_buffers_type mut_read_buffer = read_buffer.prepare(3);
+
+
       size_t len =sock.receive(mut_read_buffer);
       read_buffer.commit(len);
 
@@ -181,16 +189,45 @@ int main(){
       std::string s;
       //get operation into string
       inpStr >> s;
+      std::cout << s << std::endl;
+      
       
       
       if(s.compare("con") == 0){
         len = boost::asio::read_until(sock, read_buffer, '#');
         std::cout<< "size of context msg: " << len <<std::endl;
-        std::istream conStream(&read_buffer);
-        server_con = helib::Context::readPtrFrom(conStream);
+        read_buffer.commit(len);
+        std::istream inpStr(&read_buffer);
+        server_con = helib::Context::readPtrFrom(inpStr);
         server_con->printout();
       }
-      
+
+      if(s.compare("pub") == 0){
+        len = boost::asio::read_until(sock, read_buffer, '#'); 
+        std::cout << "size of public key msg: " << len << std::endl;
+        read_buffer.commit(len);
+        
+        //std::istream inpStr(&read_buffer);
+
+
+        std::cout << "PUBKEY FROM CONNECTION\n" << std::endl;       
+        helib::PubKey temp_pub(*server_con);
+        temp_pub.readFromJSON(inpStr,*server_con);
+        public_key = &temp_pub;
+        std::cout << public_key->writeToJSON().pretty() << std::endl;
+
+
+
+
+
+        //public_key->getContext();
+
+        //std::cout << public_key->writeToJSON().pretty() << std::endl;
+        
+        //public_key->getContext().printout();
+        
+      }
+
 
 
 
