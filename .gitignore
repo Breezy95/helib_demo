@@ -1,6 +1,7 @@
 #directories
 CmakeFiles/
 build/
+.vscode/
 
 #files
 cmake_install.cmake

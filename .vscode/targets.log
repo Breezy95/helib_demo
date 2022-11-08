@@ -6,14 +6,14 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Nov  6 13:16:51 2022
+# Make data base, printed on Tue Nov  8 01:17:21 2022
 
 # Variables
 
 # environment
 LC_ALL = C
 # environment
-WSLENV = ELECTRON_RUN_AS_NODE/w:
+WSLENV = VSCODE_WSL_EXT_LOCATION/up
 # environment
 VSCODE_CWD = /mnt/c/Users/Fabrice Benoit/AppData/Local/Programs/Microsoft VS Code
 # default
@@ -79,13 +79,13 @@ SHELL = /bin/sh
 # default
 MAKECMDGOALS := all
 # environment
-SHLVL = 1
+SHLVL = 0
 # environment
 MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = /home/fabreezy/.vscode-server/bin/8fa188b2b301d36553cbc9ce1b0a146ccb93351f/bin/remote-cli:/home/fabreezy/.local/bin:/home/fabreezy/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/WindowsApps/TheDebianProject.DebianGNULinux_1.13.0.0_x64__76v4gfsz19hv4:/mnt/c/Program Files (x86)/VMware/VMware Player/bin/:/mnt/c/Program Files (x86)/AdoptOpenJDK/jdk-11.0.10.9-hotspot/bin:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/f/Program Files/Putty/:/mnt/f/Fabrice HDD/Documents/ffmpeg-2021-03-16-git-9383885c0d-full_build/bin:/mnt/f/Mingw/bin:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files/Go/bin:/mnt/c/Users/Fabrice Benoit/AppData/Local/Microsoft/WindowsApps:/mnt/f/Program Files(x86)/Nmap:/mnt/c/Program Files/JetBrains/IntelliJ IDEA Community Edition 2021.1/bin:/mnt/c/Users/Fabrice Benoit/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/Fabrice Benoit/.dotnet/tools:/mnt/c/Users/Fabrice Benoit/AppData/Roaming/npm:/mnt/c/Users/Fabrice Benoit/go/bin:/mnt/c/msys64/mingw64/bin:/usr/local/go/bin
+PATH = /home/fabreezy/.vscode-server/bin/8fa188b2b301d36553cbc9ce1b0a146ccb93351f/bin/remote-cli:/home/fabreezy/.local/bin:/home/fabreezy/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/VMware/VMware Player/bin/:/mnt/c/Program Files (x86)/AdoptOpenJDK/jdk-11.0.10.9-hotspot/bin:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/f/Program Files/Putty/:/mnt/f/Fabrice HDD/Documents/ffmpeg-2021-03-16-git-9383885c0d-full_build/bin:/mnt/f/Mingw/bin:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files/Go/bin:/mnt/c/Users/Fabrice Benoit/AppData/Local/Microsoft/WindowsApps:/mnt/f/Program Files(x86)/Nmap:/mnt/c/Program Files/JetBrains/IntelliJ IDEA Community Edition 2021.1/bin:/mnt/c/Users/Fabrice Benoit/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/Fabrice Benoit/.dotnet/tools:/mnt/c/Users/Fabrice Benoit/AppData/Roaming/npm:/mnt/c/Users/Fabrice Benoit/go/bin:/mnt/c/msys64/mingw64/bin:/usr/local/go/bin
 # default
 MAKEFILES := 
 # automatic
@@ -93,7 +93,7 @@ MAKEFILES :=
 # automatic
 ?F = $(notdir $?)
 # environment
-NAME = Code
+NAME = DESKTOP-960VJI1
 # environment
 HOSTTYPE = x86_64
 # environment
@@ -101,7 +101,7 @@ LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:
 # automatic
 +F = $(notdir $+)
 # environment
-WSL_INTEROP = /run/WSL/10_interop
+WSL_INTEROP = /run/WSL/13967_interop
 # 'override' directive
 GNUMAKEFLAGS := 
 # makefile (from 'Makefile', line 67)
@@ -121,9 +121,9 @@ MAKE_VERSION := 4.3
 # makefile (from 'Makefile', line 44)
 MAKESILENT = -s
 # environment
-_ = /mnt/c/Users/Fabrice Benoit/AppData/Local/Programs/Microsoft VS Code/bin/code
+_ = /home/fabreezy/.vscode-server/bin/8fa188b2b301d36553cbc9ce1b0a146ccb93351f/node
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-1a31bee6-4f4d-4d40-a877-48302ef97342.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-ec63a16e-5384-4d4a-a848-4e08fd9cd8ad.sock
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -153,9 +153,9 @@ WSL_DISTRO_NAME = Debian
 
 # RCS: could not be stat'd.
 # SCCS: could not be stat'd.
-# . (device 2064, inode 68099): 29 files, no impossibilities.
+# . (device 2064, inode 68099): 25 files, no impossibilities.
 
-# 29 files, no impossibilities in 3 directories.
+# 25 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
@@ -481,12 +481,12 @@ client.cpp.s:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 74 / storage = 824 B / avg = 11 B
-# current buf: size = 8162 B / used = 824 B / count = 74 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 72 / storage = 800 B / avg = 11 B
+# current buf: size = 8162 B / used = 800 B / count = 72 / avg = 11 B
 
-# strcache performance: lookups = 225 / hit rate = 67%
+# strcache performance: lookups = 221 / hit rate = 67%
 # hash-table stats:
-# Load=74/8192=1%, Rehash=0, Collisions=0/225=0%
-# Finished Make data base on Sun Nov  6 13:16:51 2022
+# Load=72/8192=1%, Rehash=0, Collisions=0/221=0%
+# Finished Make data base on Tue Nov  8 01:17:21 2022
 
  
