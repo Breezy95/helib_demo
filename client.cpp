@@ -261,16 +261,6 @@ int main(){
     
     outStre<< "#";
 
-    std::ofstream outPublicKeyFile;
-  outPublicKeyFile.open("pk_client.json", std::ios::out);
-  if (outPublicKeyFile.is_open()) {
-    // Write the secret key to a file
-    public_key.writeToJSON(outPublicKeyFile);
-    // Close the ofstream
-    outPublicKeyFile.close();
-  } else {
-    throw std::runtime_error("Could not open file 'pk_client.json'.");
-  }
 
     
     len = boost::asio::write(socket, boost::asio::buffer(streBuf.data()), err);
