@@ -2,10 +2,10 @@
 //implement string matching
 #include <iostream>
 #include <helib/helib.h>
-#include <helib/EncryptedArray.h>
+
 #include <NTL/BasicThreadPool.h>
 #include <vector>
-#include "helib_func.hpp"
+#include "header_f/helib_func.hpp"
 
 /* helib::Context* contextSupplier(){
 long p= 2;
@@ -34,15 +34,11 @@ long p= 2;
 //supply_context?
 int main(){
   std::vector<int> test = {0,1,2,3,4,5,6,68,8,9};
+
   helib::Context* context = helib_func::contextSupplier();
 
+  
 
-    helib::SecKey secretkey(*context);
-    secretkey.GenSecKey();
-    
-    
-
- 
     
    return 0; 
 }

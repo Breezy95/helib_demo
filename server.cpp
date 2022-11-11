@@ -1,6 +1,8 @@
 #include <iostream>
 #include <ctime>
 #include <string>
+#include <vector>
+
 #include <boost/asio.hpp>
 #include <boost/bind/bind.hpp>
 #include <boost/thread/thread.hpp>
@@ -12,9 +14,13 @@
 #include <helib/helib.h>
 
 #include "header_f/helib_func.hpp"
+#include "header_f/csv.h"
 
 
 using boost::asio::ip::tcp;
+
+
+
 
 std::string curr_time(){
 
@@ -147,6 +153,18 @@ class tcp_server{
 }; 
 
 
+std::vector<std::vector<int>> loadKey(){
+  std::vector<std::vector<int>> ans;
+  std::vector<std::string> lines;
+  try{
+    std::string line;
+    io::LineReader lr("server_files/key.txt");
+}
+catch(std::exception& e){}
+
+return ans;
+
+}
 
 
 
@@ -154,6 +172,10 @@ class tcp_server{
  
 
 int main(){
+
+  std::vector<int> key = {1,2,3,4,5,6,7,8,9,10};
+
+
    size_t len;
    helib::Context* server_con;
    helib::PubKey* public_key;
@@ -170,18 +192,20 @@ int main(){
       //boost::array<char, 128UL> buf;
       //boost::system::error_code error;
 
-    for(;;){
+    for(int i=0;i<4;i++){
       boost::asio::streambuf read_buffer;
      
       //get msg size
-
-    
       
+    
+      std::cout<< "BEGIN LOOP <<" <<std::endl;
       
       boost::asio::streambuf::mutable_buffers_type mut_read_buffer = read_buffer.prepare(3);
 
 
-      size_t len =sock.receive(mut_read_buffer);
+      size_t len = sock.receive(mut_read_buffer);
+      
+      
       read_buffer.commit(len);
 
       std::istream inpStr(&read_buffer);
@@ -189,44 +213,79 @@ int main(){
       std::string s;
       //get operation into string
       inpStr >> s;
+
       std::cout << s << std::endl;
+      std::cout <<"size of read_buffer: " <<read_buffer.size() << std::endl;
       
       
-      
+       
       if(s.compare("con") == 0){
-        len = boost::asio::read_until(sock, read_buffer, '#');
-        std::cout<< "size of context msg: " << len <<std::endl;
-        read_buffer.commit(len);
-        std::istream inpStr(&read_buffer);
-        server_con = helib::Context::readPtrFrom(inpStr);
-        server_con->printout();
+        //read in size of msg
+      boost::asio::streambuf size_header;
+      boost::asio::streambuf::mutable_buffers_type mut_read_buffer_cmd = size_header.prepare(10);
+      len = sock.receive(mut_read_buffer_cmd);
+      size_header.commit(len);
+      std::istream sizeStr(&size_header);
+      int pay_size;
+      sizeStr >> pay_size;
+      //int size = stoi(pay_size);
+      std::istream conStr(&size_header);
+
+      //read in msg of the byte amt of size variable
+      mut_read_buffer_cmd = size_header.prepare(pay_size);
+      len = sock.receive(mut_read_buffer_cmd);
+      size_header.commit(len);
+      std::cout << "length of msg is : " << len << std::endl;
+      server_con = helib::Context::readPtrFrom(conStr);
+      server_con->printout();
+      std::cout << "Success! "<< std::endl;
+        
       }
 
       if(s.compare("pub") == 0){
-        len = boost::asio::read_until(sock, read_buffer, '#'); 
-        std::cout << "size of public key msg: " << len << std::endl;
-        read_buffer.commit(len);
+        boost::asio::streambuf size_header;
+        boost::asio::streambuf::mutable_buffers_type mut_read_buffer_cmd = size_header.prepare(10);
+
+      //read in size of msg
+      len = sock.receive(mut_read_buffer_cmd);
+      size_header.commit(len);
+      std::istream sizeStr(&size_header);
+      int pay_size;
+      sizeStr >> pay_size;
+      
+      
+      std::cout << "size of public key msg: " << len << std::endl;
+      std::cout << "size in size msg: " << pay_size << std::endl;
+      std::cout << "size of mut_buf" <<mut_read_buffer_cmd.size()<< std::endl;
+      //read in msg 
+      std::istream pubStr(&size_header);
+      mut_read_buffer_cmd = size_header.prepare(pay_size); 
+      len = boost::asio::read(sock,mut_read_buffer_cmd);
+      size_header.commit(len);
+      std::cout << "size of mut_buf" <<mut_read_buffer_cmd.size()<< std::endl;
+      std::cout << "length of msg is : " << len << std::endl;
+      
+      std::cout << "PUBKEY FROM CONNECTION\n" << std::endl;       
+      helib::PubKey temp_pub(*server_con);
+      temp_pub.readFrom(pubStr,*server_con);
+      public_key = &temp_pub;
+      public_key ->getContext().printout();
+
+      std::cout << "Success! "<< std::endl;    
+        }
+
+      
+      if(s.compare("vec") == 0){
         
-        //std::istream inpStr(&read_buffer);
-
-
-        std::cout << "PUBKEY FROM CONNECTION\n" << std::endl;       
-        helib::PubKey temp_pub(*server_con);
-        temp_pub.readFromJSON(inpStr,*server_con);
-        public_key = &temp_pub;
-        std::cout << public_key->writeToJSON().pretty() << std::endl;
-
-
-
-
-
-        //public_key->getContext();
-
-        //std::cout << public_key->writeToJSON().pretty() << std::endl;
+        std::cout << "Encrypted vector" << std::endl;
         
-        //public_key->getContext().printout();
+
+        //len = sock.receive( boost::asio::buffer(buf));
+        std::cout << "size of buffer msg: " << len << std::endl;
+
         
-      }
+ 
+        }
 
 
 
@@ -256,10 +315,11 @@ int main(){
     std::cerr << e.what() << std::endl;
    }
 
-
  
   return 0;
 }
+
+
 
  
    //g++ -o -g server server.cpp -L include/boost -lpthread to compile

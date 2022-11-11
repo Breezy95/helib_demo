@@ -6,6 +6,7 @@ CMakeFiles/client_test.dir/client.cpp.o
  /home/fabreezy/Documents/Projects/helib_demo/header_f/helib_func.hpp
  /home/fabreezy/Documents/Projects/helib_demo/header_f/json.hpp
  /usr/local/helib_pack/include/NTL/ALL_FEATURES.h
+ /usr/local/helib_pack/include/NTL/BasicThreadPool.h
  /usr/local/helib_pack/include/NTL/FFT.h
  /usr/local/helib_pack/include/NTL/GF2.h
  /usr/local/helib_pack/include/NTL/GF2E.h
@@ -80,6 +81,7 @@ CMakeFiles/client_test.dir/client.cpp.o
  /usr/local/helib_pack/include/helib/CModulus.h
  /usr/local/helib_pack/include/helib/ClonedPtr.h
  /usr/local/helib_pack/include/helib/Context.h
+ /usr/local/helib_pack/include/helib/CtPtrs.h
  /usr/local/helib_pack/include/helib/Ctxt.h
  /usr/local/helib_pack/include/helib/DoubleCRT.h
  /usr/local/helib_pack/include/helib/EncodedPtxt.h
@@ -92,14 +94,18 @@ CMakeFiles/client_test.dir/client.cpp.o
  /usr/local/helib_pack/include/helib/PGFFT.h
  /usr/local/helib_pack/include/helib/PolyMod.h
  /usr/local/helib_pack/include/helib/PolyModRing.h
+ /usr/local/helib_pack/include/helib/PtrMatrix.h
+ /usr/local/helib_pack/include/helib/PtrVector.h
  /usr/local/helib_pack/include/helib/Ptxt.h
  /usr/local/helib_pack/include/helib/apiAttributes.h
  /usr/local/helib_pack/include/helib/assertions.h
+ /usr/local/helib_pack/include/helib/binaryArith.h
  /usr/local/helib_pack/include/helib/binio.h
  /usr/local/helib_pack/include/helib/bluestein.h
  /usr/local/helib_pack/include/helib/exceptions.h
  /usr/local/helib_pack/include/helib/helib.h
  /usr/local/helib_pack/include/helib/hypercube.h
+ /usr/local/helib_pack/include/helib/intraSlot.h
  /usr/local/helib_pack/include/helib/keySwitching.h
  /usr/local/helib_pack/include/helib/keys.h
  /usr/local/helib_pack/include/helib/log.h
