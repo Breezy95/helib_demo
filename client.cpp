@@ -28,8 +28,6 @@ using json = ::nlohmann::json;
 using boost::asio::ip::tcp;
 
 
-
-
 void number_placement(string* val){
         for(int i=0;i<10;i++){
             cout <<"Number " << i+1 << ": ";
@@ -50,7 +48,6 @@ void number_placement(string* val){
             val[i] = inp;
             }
     }
-
 
 
 struct slow_print{
@@ -200,42 +197,52 @@ size_t send_key_payload(boost::asio::ip::tcp::socket& sock, boost::asio::streamb
     sbuf.consume(pay_len);
     //std::cout <<"size of key payload byte length: " <<pay_len << std::endl;
 
-    pubkey.writeTo(output);
+    //pubkey.writeTo(output);
     pay_len = boost::asio::write(sock,temp_buf,boost::asio::transfer_all());
-    //sbuf.consume(pay_len);
+    sbuf.consume(pay_len);
     
     std::cout << "size of msg: " << pay_len << std::endl;
     std::cout << "size of streambuf: " << temp_buf.size() << std::endl;
-
-
 
     return pay_len;
 }
 
 size_t send_values(boost::asio::ip::tcp::socket& sock, boost::asio::streambuf& sbuf, helib::Ctxt ctxt){
 
+    std::ostream output(&sbuf); 
+    boost::asio::streambuf temp_buf;
+    std::ostream temp_str(&temp_buf);
+    ctxt.writeToJSON(temp_str);
+    int32_t size = temp_buf.size();
     
-return 1;  
+    //send value first
+    std::stringstream ss;
+    ss << std::setw(10) << std::setfill('0') << size;
+    std::string s = ss.str();
+    std::cout << "size of payload: " << s << std::endl;
+    output << s;
+
+    size_t pay_len = sock.send(sbuf.data());
+     
+
+    //send ctxt vector
+    pay_len = sock.send(temp_buf.data());
+
+    
+    
+    
+
+return pay_len;  
 }
-
-
-
-
-
-
 
 
 
 int main(){
 
-    srand(3454);
+  srand(3454);
     
 
-    
-
-    vector<int> test = {0,1,2,3,4,5,6,68,8,9};
-
-   long p= 2;
+  long p= 2;
   long m = 4095;
   long r = 1;
   long c = 2;
@@ -256,6 +263,8 @@ int main(){
   .bootstrappable(true)
   .build();
 
+  
+
   helib::SecKey secret_key(hel_context);
   // Generate the secret key
   secret_key.GenSecKey();
@@ -266,106 +275,119 @@ int main(){
   //upcasting pub
   const helib::PubKey& public_key = secret_key;
 
+ 
+
   // Get the EncryptedArray of the context
   const helib::EncryptedArray& ea = hel_context.getEA();
-
+  std::vector<helib::zzX> unpackSlotEncoding;
+  helib::buildUnpackSlotEncoding(unpackSlotEncoding, ea);
   // Get the number of slot (phi(m))
   long nslots = ea.size();
   std::cout << "Number of slots: " << nslots << std::endl;
 
+  std::vector<long> test = {10};
+  long bitSize = 16;
+  long outSize = 2* bitSize;
+  long entry = test[0];
+
+
+  helib::Ctxt scratch(public_key);
+  std::vector<helib::Ctxt> encrypted_data(bitSize, scratch);
+
+  for(int i =0;i<bitSize;i++){
+    std::vector<long> data(ea.size());
+
+    for (auto& slot : data){ slot = (entry >> i) & 1; }
+
+    ea.encrypt(encrypted_data[i], public_key, data);
+    }
+
+    std::vector<long> decrypt;
+    helib::CtPtrs_vectorCt result_wrapper(encrypted_data);
+
+    helib::decryptBinaryNums(decrypt, result_wrapper, secret_key, ea);
+    
+
+    //now send data over connection
+    boost::asio::io_context io_context;
+
+    tcp::socket socket(io_context);
+    boost::asio::ip::address_v4 addr({127,0,0,1});
+    boost::asio::ip::tcp::endpoint endpt(addr,1337);
+    socket.connect(endpt);
+    boost::array<char, 128> buf;
+    
+        
+        boost::system::error_code error;
+        //oper
+        try{
+        size_t len = boost::asio::read(socket,boost::asio::buffer(buf),boost::asio::transfer_exactly(5) ,error);
+        std::cout <<"length of message in bytes: " << len <<std::endl;
+        std::cout<< "message: " << buf.data() << std::endl;
+        if( error == boost::asio::error::eof){
+            throw boost::asio::error::eof;
+            }
+        if(error){
+            throw boost::system::system_error(error);
+            }
+        }
+        catch(std::exception& e){
+            std::cout << e.what() << std::endl;
+            }
+
+        //len
+        try{
+            boost::array<char, 128UL> s;
+            size_t len = boost::asio::read(socket,boost::asio::buffer(s),boost::asio::transfer_exactly(10) ,error);
+            std::cout <<"length of message in bytes: " << len <<std::endl;
+        std::cout<< "message: "; std::cout.write(buf.data(),10) << std::endl;
+        if( error == boost::asio::error::eof){
+            throw boost::asio::error::eof;
+            }
+        if(error){
+            throw boost::system::system_error(error);
+            }
+        }
+        catch(std::exception& e){
+            std::cout << e.what() << std::endl;
+            }
+
+        //payload
+            try{
+            size_t len = boost::asio::read(socket,boost::asio::buffer(buf),boost::asio::transfer_exactly(12) ,error);
+            std::cout <<"length of message in bytes: " << len <<std::endl;
+        std::cout<< "message: " << buf.data() << std::endl;
+        if( error == boost::asio::error::eof){
+            throw boost::asio::error::eof;
+            }
+        if(error){
+            throw boost::system::system_error(error);
+            }
+        }
+        catch(std::exception& e){
+            std::cout << e.what() << std::endl;
+            }
+
+        //send bytestream of helib file
+        
+        
+
+    
+    
+    
+    
+
+    
+
+
   
-  helib::Ptxt<helib::BGV> ptxt(hel_context);
-
-   for (int i = 0; i < test.size(); i++) {
-    ptxt[i] = test[i];
-  }
-
-   
 
 
-   helib::Ctxt ctxt(public_key);
 
-    public_key.Encrypt(ctxt, ptxt);
-
-    
+  
+  
 
 
-    //send context, public key, and then vector
-
-    try{
-    boost::asio::io_context io_ctx;
-    tcp::resolver resolver(io_ctx);
-
-    //how you resolve an arbitrary ip_addr
-    tcp::resolver::results_type endpoints = resolver.resolve("127.0.0.1", "1337");
-
-
-    tcp::socket socket(io_ctx);
-
-    boost::asio::connect(socket, endpoints);
-    boost::system::error_code err;
-
-    boost::asio::streambuf strBuf;
-    std::ostream outStr(&strBuf);
-    std::string con = "con";
-    
-    send_command(con, socket,strBuf);
-
-    send_con_payload(socket, strBuf, &hel_context);
-
-    std::string pub = "pub";
-    send_command(pub, socket, strBuf);
-
-    send_key_payload(socket, strBuf, public_key);
-    
-    /*
-    size_t len = boost::asio::write(socket, boost::asio::buffer(strBuf.data()), err);
-
-    std::cout << "size of message: " << len << std::endl;
-    
-     boost::asio::streambuf vecBuf;
-    std::ostream vecStr(&vecBuf);
-    
-    vecStr << "vec";
-    //vecStr << "#";
-    ctxt.writeToJSON(vecStr);
-    vecStr << "#";
-
-    len = boost::asio::write(socket, boost::asio::buffer(vecBuf.data()));
-
-    std::cout << "byte length of test vector: " << len << std::endl;
-
-    //send pubkey
-    boost::asio::streambuf streBuf;
-    std::ostream outStre(&streBuf);
-    
-    
-    outStre << "pub";
-    public_key.writeToJSON(outStre);
-    
-    outStre<< "#";
-
-
-    
-    len = boost::asio::write(socket, boost::asio::buffer(streBuf.data()), err);
-    std::cout << "length of public key: " << len << std::endl;
-
-    
-
-    
-
-     */
-
-    for(;;){}
-
-    //send encrypted vector
-    
-    }
-    catch(std::exception& e) {
-        std::cout<< e.what() << std::endl;
-    }
-    
-    std::cout <<"end of client" << std::endl;
    
     return 0;
 

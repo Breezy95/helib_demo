@@ -6,9 +6,13 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_EXTENSIONS OFF)
 ## Require full C++ standard
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 project(HELibDemo VERSION 1.0)
 add_executable(client_test client.cpp)
 add_executable(server_test server.cpp)
+#add_executable(tests tests.cpp)
 find_package(helib ${HELIB_VERSION} REQUIRED)
 target_link_libraries(client_test helib)
 target_link_libraries(server_test helib)
+#target_link_libraries(tests helib)
+
