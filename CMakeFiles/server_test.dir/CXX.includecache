@@ -73,10 +73,14 @@ helib/helib.h
 -
 helib/Ctxt.h
 -
+thread
+-
 header_f/helib_func.hpp
 /home/fabreezy/Documents/Projects/helib_demo/header_f/helib_func.hpp
 header_f/csv.h
 /home/fabreezy/Documents/Projects/helib_demo/header_f/csv.h
+helib/intraSlot.h
+-
 
 /usr/local/helib_pack/include/NTL/ALL_FEATURES.h
 NTL/HAVE_ALIGNED_ARRAY.h
@@ -110,6 +114,22 @@ NTL/HAVE_POSIX_TIME.h
 NTL/HAVE_AES_NI.h
 -
 NTL/HAVE_KMA.h
+-
+
+/usr/local/helib_pack/include/NTL/BasicThreadPool.h
+NTL/tools.h
+-
+NTL/vector.h
+-
+NTL/SmartPtr.h
+-
+NTL/thread.h
+-
+thread
+-
+condition_variable
+-
+exception
 -
 
 /usr/local/helib_pack/include/NTL/FFT.h
@@ -572,6 +592,16 @@ helib/JsonWrapper.h
 NTL/Lazy.h
 -
 
+/usr/local/helib_pack/include/helib/CtPtrs.h
+initializer_list
+-
+helib/Ctxt.h
+-
+helib/PtrVector.h
+-
+helib/PtrMatrix.h
+-
+
 /usr/local/helib_pack/include/helib/Ctxt.h
 helib/DoubleCRT.h
 -
@@ -754,6 +784,26 @@ NTL/ZZ_p.h
 vector
 -
 
+/usr/local/helib_pack/include/helib/PtrMatrix.h
+initializer_list
+-
+helib/PtrVector.h
+-
+
+/usr/local/helib_pack/include/helib/PtrVector.h
+stdexcept
+-
+climits
+-
+vector
+-
+NTL/vector.h
+-
+helib/assertions.h
+-
+helib/apiAttributes.h
+-
+
 /usr/local/helib_pack/include/helib/Ptxt.h
 type_traits
 -
@@ -818,6 +868,18 @@ helib/Ptxt.h
 
 /usr/local/helib_pack/include/helib/hypercube.h
 helib/NumbTh.h
+-
+
+/usr/local/helib_pack/include/helib/intraSlot.h
+NTL/BasicThreadPool.h
+-
+helib/Context.h
+-
+helib/EncryptedArray.h
+-
+helib/Ctxt.h
+-
+helib/CtPtrs.h
 -
 
 /usr/local/helib_pack/include/helib/keySwitching.h

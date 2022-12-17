@@ -22,7 +22,7 @@
 #include "header_f/helib_func.hpp"
 
 
-#include <fstream>
+
 using namespace std;
 using json = ::nlohmann::json;
 using boost::asio::ip::tcp;
@@ -239,7 +239,8 @@ return pay_len;
 
 int main(){
 
-  srand(3454);
+     // boilerplate code and encrypting test val////////////////////////////////////////////////
+   srand(3454);
     
 
   long p= 2;
@@ -263,49 +264,6 @@ int main(){
   .bootstrappable(true)
   .build();
 
-  
-
-  helib::SecKey secret_key(hel_context);
-  // Generate the secret key
-  secret_key.GenSecKey();
-  std::cout << "Generating key-switching matrices..." << std::endl;
-  // Compute key-switching matrices that we need
-  helib::addSome1DMatrices(secret_key);
-
-  //upcasting pub
-  const helib::PubKey& public_key = secret_key;
-
- 
-
-  // Get the EncryptedArray of the context
-  const helib::EncryptedArray& ea = hel_context.getEA();
-  std::vector<helib::zzX> unpackSlotEncoding;
-  helib::buildUnpackSlotEncoding(unpackSlotEncoding, ea);
-  // Get the number of slot (phi(m))
-  long nslots = ea.size();
-  std::cout << "Number of slots: " << nslots << std::endl;
-
-  std::vector<long> test = {10};
-  long bitSize = 16;
-  long outSize = 2* bitSize;
-  long entry = test[0];
-
-
-  helib::Ctxt scratch(public_key);
-  std::vector<helib::Ctxt> encrypted_data(bitSize, scratch);
-
-  for(int i =0;i<bitSize;i++){
-    std::vector<long> data(ea.size());
-
-    for (auto& slot : data){ slot = (entry >> i) & 1; }
-
-    ea.encrypt(encrypted_data[i], public_key, data);
-    }
-
-    std::vector<long> decrypt;
-    helib::CtPtrs_vectorCt result_wrapper(encrypted_data);
-
-    helib::decryptBinaryNums(decrypt, result_wrapper, secret_key, ea);
     
 
     //now send data over connection
@@ -334,13 +292,14 @@ int main(){
         catch(std::exception& e){
             std::cout << e.what() << std::endl;
             }
-
-        //len
+        
+        //len of msg
+        char s[20];
         try{
-            boost::array<char, 128UL> s;
-            size_t len = boost::asio::read(socket,boost::asio::buffer(s),boost::asio::transfer_exactly(10) ,error);
+            
+            size_t len = boost::asio::read(socket,boost::asio::buffer(s),boost::asio::transfer_exactly(20) ,error);
             std::cout <<"length of message in bytes: " << len <<std::endl;
-        std::cout<< "message: "; std::cout.write(buf.data(),10) << std::endl;
+        std::cout<< "message: "; std::cout.write(s,20) << std::endl;
         if( error == boost::asio::error::eof){
             throw boost::asio::error::eof;
             }
@@ -352,11 +311,18 @@ int main(){
             std::cout << e.what() << std::endl;
             }
 
-        //payload
+            //conv msg into input
+            int msg_len =atoi(s);
+            
+
+        //payload, receive bytestream of helib file
             try{
-            size_t len = boost::asio::read(socket,boost::asio::buffer(buf),boost::asio::transfer_exactly(12) ,error);
+            boost::asio::streambuf key_sb;
+            std::istream inp(&key_sb);
+            size_t len = boost::asio::read(socket, key_sb,boost::asio::transfer_exactly(msg_len) ,error);
             std::cout <<"length of message in bytes: " << len <<std::endl;
-        std::cout<< "message: " << buf.data() << std::endl;
+            helib::PubKey key = helib::PubKey::readFrom(inp, hel_context);
+        
         if( error == boost::asio::error::eof){
             throw boost::asio::error::eof;
             }
@@ -367,27 +333,6 @@ int main(){
         catch(std::exception& e){
             std::cout << e.what() << std::endl;
             }
-
-        //send bytestream of helib file
-        
-        
-
-    
-    
-    
-    
-
-    
-
-
-  
-
-
-
-  
-  
-
-
    
     return 0;
 
