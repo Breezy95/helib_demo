@@ -39,33 +39,111 @@ std::string padZeroes(std::string value){
   return padded_num;
 }
 
-int main(){
-  // boilerplate code and encrypting test val////////////////////////////////////////////////
-   srand(3454);
+
+class tcp_connection : public boost::enable_shared_from_this<tcp_connection> {
+  public:
+  typedef std::shared_ptr<tcp_connection> pointer;
+
+  static pointer create(boost::asio::io_context& io_context){
+
+    auto ptr = pointer(new tcp_connection(io_context));
+    //clientCons.push_back(ptr);
+    return ptr;
+  }
+
+  tcp::socket& socket(){
+    return socket_;
+  }
+
+  void start(helib::PubKey* handout_key){
+    boost::asio::streambuf key_sb;
     
+    std::ostream output(&key_sb);
+    handout_key->writeTo(output);
+    std::string msgSize = std::to_string(key_sb.data().size());
 
-  long p= 2;
-  long m = 4095;
-  long r = 1;
-  long c = 2;
-  long bits = 500;
-  std::vector<long> mvec = {7,5,9,13};
-  std::vector<long> gens = {2341,3277,911};
-  std::vector<long> ords = {6,4,6};
+    //sending len
+    std::string msg_len = padZeroes(msgSize);
+    boost::asio::write(socket_, boost::asio::buffer(msg_len));
 
-  helib::Context hel_context = helib::ContextBuilder<helib::BGV>()
-  .m(m)
-  .p(p)
-  .r(r)
-  .gens(gens)
-  .ords(ords)
-  .bits(bits)
-  .c(c)
-  .mvec(mvec)
-  .bootstrappable(true)
-  .build();
+  // sending key
+   
+    boost::asio::write(socket_, key_sb.data());
+    
+    
+  }
 
-  
+  private:
+    tcp_connection(boost::asio::io_context& io_context) : socket_(io_context) {    }
+
+    void handle_write(const boost::system::error_code& err, size_t len){
+
+    }
+
+    tcp::socket socket_;
+    //static std::vector<pointer> clientCons;
+};
+
+//server for handout of public keys and matching to lottery key
+class helib_tcp_server{
+  public:
+  helib_tcp_server(boost::asio::io_context& io_context, helib::Context* con_addr) :
+      io_context_(io_context), acceptor_(io_context, tcp::endpoint(tcp::v4(),1337)), secretKey(*con_addr){      
+
+        start_accept();
+  }
+
+
+
+  private:
+    void start_accept(){
+      tcp_connection::pointer new_conn = tcp_connection::create(io_context_);
+
+      acceptor_.async_accept(new_conn -> socket(),boost::bind(&helib_tcp_server::handle_accept, this, new_conn, boost::asio::placeholders::error));
+    }
+
+    void handle_accept(tcp_connection::pointer new_connection, const boost::system::error_code& err){
+      if(!err){
+        //generate public key
+        //need identifier for client connecting
+        
+        secretKey.GenSecKey();
+        helib::addSome1DMatrices(secretKey);
+        
+
+        helib::PubKey& temp_pub = secretKey;
+        
+        
+        std::pair<helib::SecKey*,helib::PubKey*> key_pair(&secretKey,&temp_pub); 
+
+        tcp::endpoint client_ep =new_connection.get()->socket().remote_endpoint();
+        boost::asio::ip::address client_addr = client_ep.address();
+        std::string addr_str = client_addr.to_string();
+        
+        address_map[addr_str] = key_pair;
+
+        
+        new_connection -> start( address_map[addr_str].second );
+      }
+
+      start_accept();
+    }
+
+//not sure how we're going to reference the clients best guess so far is using the map below
+boost::asio::io_context& io_context_;
+tcp::acceptor acceptor_; 
+int counter =0;
+helib::SecKey secretKey;
+
+helib::Context* server_con_;
+std::unordered_map<std::string, std::pair<helib::SecKey*,helib::PubKey*>> address_map;
+
+};
+
+
+
+
+/*
 
   helib::SecKey secret_key(hel_context);
   // Generate the secret key
@@ -124,88 +202,42 @@ int main(){
 
 
   }
+*/
+ 
+
+int main(){
+  // boilerplate code and encrypting test val////////////////////////////////////////////////
+   srand(3454);
+    
+
+  long p= 2;
+  long m = 4095;
+  long r = 1;
+  long c = 2;
+  long bits = 500;
+  std::vector<long> mvec = {7,5,9,13};
+  std::vector<long> gens = {2341,3277,911};
+  std::vector<long> ords = {6,4,6};
+
+  helib::Context* hel_context = helib::ContextBuilder<helib::BGV>()
+  .m(m)
+  .p(p)
+  .r(r)
+  .gens(gens)
+  .ords(ords)
+  .bits(bits)
+  .c(c)
+  .mvec(mvec)
+  .bootstrappable(true)
+  .buildPtr();
+
+  boost::asio::io_context io_context;
+  helib_tcp_server server(io_context, hel_context);
+  io_context.run();
 
 
 
 }
-
-//server for handout of public keys and matching to lottery key
-class helib_tcp_server{
-  public:
-  helib_tcp_server(boost::asio::io_context& io_context) :
-      io_context_(io_context), acceptor_(io_context, tcp::endpoint(tcp::v4(),1337)){
-        start_accept();
-  }
-
-  private:
-    void start_accept(){
-      tcp_connection::pointer new_conn = tcp_connection::create(io_context_);
-
-      acceptor_.async_accept(new_conn -> socket(),boost::bind(&helib_tcp_server::handle_accept, this, new_conn, boost::asio::placeholders::error));
-    }
-
-    void handle_accept(tcp_connection::pointer new_connection, const boost::system::error_code& err){
-      if(!err){
-        //genera
-        new_connection -> start();
-      }
-
-      start_accept();
-    }
-
-boost::asio::io_context& io_context_;
-tcp::acceptor acceptor_;  
-std::vector<helib::PubKey> clientKeys;
-
-};
-
-class tcp_connection : public boost::enable_shared_from_this<tcp_connection> {
-  public:
-  typedef std::shared_ptr<tcp_connection> pointer;
-
-  static pointer create(boost::asio::io_context& io_context){
-
-    auto ptr = pointer(new tcp_connection(io_context));
-    tcp_connection::clientCons.push_back(ptr);
-  }
-
-  tcp::socket& socket(){
-    return socket_;
-  }
-
-  void start(helib::PubKey& handout_key){
-    boost::asio::streambuf key_sb;
-    
-    std::ostream output(&key_sb);
-    handout_key.writeTo(output);
-    std::string msgSize = std::to_string(key_sb.data().size());
-
-    //sending len
-    std::string msg_len = padZeroes(msgSize);
-    boost::asio::write(socket, boost::asio::buffer(msg_len));
-
-  // sending key
-   
-    boost::asio::write(socket, key_sb.data());
-    
-    
-  }
-
-  private:
-    tcp_connection(boost::asio::io_context& io_context) : socket_(io_context) {    }
-
-    void handle_write(const boost::system::error_code& err, size_t len){
-
-    }
-
-    tcp::socket socket_;
-    static std::vector<pointer> clientCons;
-};
-
-
-
- 
-
 
 
 
