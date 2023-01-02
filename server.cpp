@@ -23,12 +23,14 @@
 
 #include <helib/intraSlot.h>
 
-
+//current goal: connect multiple clients to server,
+//have server receive encrypted lottery guesses from clients
+//send success to the correct client
 
 
 using boost::asio::ip::tcp;
 
-//pad up to 10 digits in string length use for sending msg sizes
+//pad up to 20 digits in string length use for sending msg sizes
 //input is the length of the payload in string form 
 std::string padZeroes(std::string value){
   std::stringstream ss;
@@ -39,6 +41,10 @@ std::string padZeroes(std::string value){
   return padded_num;
 }
 
+
+class user{
+  virtual void deliver() = 0; 
+};
 
 class tcp_connection : public boost::enable_shared_from_this<tcp_connection> {
   public:
@@ -56,7 +62,7 @@ class tcp_connection : public boost::enable_shared_from_this<tcp_connection> {
   }
 
   void start(helib::PubKey* handout_key){
-    boost::asio::streambuf key_sb;
+    
     
     std::ostream output(&key_sb);
     handout_key->writeTo(output);
@@ -67,21 +73,32 @@ class tcp_connection : public boost::enable_shared_from_this<tcp_connection> {
     boost::asio::write(socket_, boost::asio::buffer(msg_len));
 
   // sending key
-   
     boost::asio::write(socket_, key_sb.data());
+
+
     
+    std::cout<< "async read" << std::endl;
+    size_t len=0;
+    
+    socket_.async_read_some(boost::asio::buffer(data_,1024), boost::bind(&tcp_connection::handle_read, this,
+     boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred));
     
   }
 
   private:
     tcp_connection(boost::asio::io_context& io_context) : socket_(io_context) {    }
 
-    void handle_write(const boost::system::error_code& err, size_t len){
 
+    void handle_read(const boost::system::error_code& error, size_t bytes_transferred){
+      if(!error){
+        std::cout<< "handle read";
+      }
+     
     }
 
     tcp::socket socket_;
-    //static std::vector<pointer> clientCons;
+    boost::asio::streambuf key_sb;
+    char data_[1024];
 };
 
 //server for handout of public keys and matching to lottery key
@@ -129,14 +146,25 @@ class helib_tcp_server{
       start_accept();
     }
 
-//not sure how we're going to reference the clients best guess so far is using the map below
+
 boost::asio::io_context& io_context_;
 tcp::acceptor acceptor_; 
-int counter =0;
+
 helib::SecKey secretKey;
 
 helib::Context* server_con_;
+
+//not sure how we're going to reference the clients best guess so far is using the map below
 std::unordered_map<std::string, std::pair<helib::SecKey*,helib::PubKey*>> address_map;
+
+/*
+remember each number is encoded into a vector of ctxts
+   vec_1 1
+   vec_2 1
+   vec_3 0
+
+   = 6
+*/
 
 };
 

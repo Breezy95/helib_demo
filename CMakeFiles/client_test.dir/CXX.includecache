@@ -39,8 +39,6 @@ helib/binaryArith.h
 -
 helib/intraSlot.h
 -
-helib/binio.h
-/home/fabreezy/Documents/Projects/helib_demo/helib/binio.h
 header_f/json.hpp
 /home/fabreezy/Documents/Projects/helib_demo/header_f/json.hpp
 header_f/helib_func.hpp
@@ -1192,28 +1190,6 @@ helib/exceptions.h
 helib/EncryptedArray.h
 -
 helib/CtPtrs.h
--
-
-/usr/local/helib_pack/include/helib/binio.h
-iostream
--
-array
--
-vector
--
-type_traits
--
-cstdint
--
-sstream
--
-helib/assertions.h
--
-helib/version.h
--
-NTL/xdouble.h
--
-NTL/vec_long.h
 -
 
 /usr/local/helib_pack/include/helib/bluestein.h

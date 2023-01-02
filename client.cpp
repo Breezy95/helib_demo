@@ -17,7 +17,6 @@
 #include <helib/binaryArith.h>
 #include <helib/intraSlot.h>
 
-#include "helib/binio.h"
 #include "header_f/json.hpp"
 #include "header_f/helib_func.hpp"
 
@@ -28,10 +27,10 @@ using json = ::nlohmann::json;
 using boost::asio::ip::tcp;
 
 
-void number_placement(string* val){
+void number_placement(std::string* val){
         for(int i=0;i<10;i++){
             cout <<"Number " << i+1 << ": ";
-            string inp;
+            std::string inp;
 
             cin >> inp;
 
@@ -207,6 +206,8 @@ size_t send_key_payload(boost::asio::ip::tcp::socket& sock, boost::asio::streamb
     return pay_len;
 }
 
+
+
 size_t send_values(boost::asio::ip::tcp::socket& sock, boost::asio::streambuf& sbuf, helib::Ctxt ctxt){
 
     std::ostream output(&sbuf); 
@@ -233,6 +234,64 @@ size_t send_values(boost::asio::ip::tcp::socket& sock, boost::asio::streambuf& s
     
 
 return pay_len;  
+}
+
+//returns msg length
+int receiveMsgLen(boost::asio::ip::tcp::socket& socket){
+    char s[20];
+    boost::system::error_code error;
+        try{
+            
+            size_t len = boost::asio::read(socket,boost::asio::buffer(s),boost::asio::transfer_exactly(20) ,error);
+            std::cout <<"length of message in bytes: " << len <<std::endl;
+        std::cout<< "message: "; std::cout.write(s,20) << std::endl;
+        if( error == boost::asio::error::eof){
+            throw boost::asio::error::eof;
+            }
+        if(error){
+            throw boost::system::system_error(error);
+            }
+        }
+        catch(std::exception& e){
+            std::cout << e.what() << std::endl;
+            }
+
+    size_t msg_len =atoi(s);
+    return msg_len;
+}
+
+void receiveMsg(boost::asio::ip::tcp::socket& socket,boost::asio::streambuf& sbuf,int msg_len,helib::Context* hel_context){
+
+    try{
+        boost::system::error_code error;
+        std::istream inp(&sbuf);
+        boost::asio::read(socket, sbuf,boost::asio::transfer_exactly(msg_len));
+    }
+    catch(std::exception& e){
+        std::cout << e.what() << std::endl; 
+    }
+        
+        /*try{
+            boost::system::error_code error;
+            std::istream inp(&sbuf);
+            size_t len = boost::asio::read(socket, sbuf,boost::asio::transfer_exactly(msg_len) ,error);
+            std::cout <<"length of message in bytes: " << len <<std::endl;
+            helib::PubKey key = helib::PubKey::readFrom(inp, hel_context);
+            
+            std::cout << key.writeToJSON().toString() << std::endl;
+        
+        if( error == boost::asio::error::eof){
+            throw boost::asio::error::eof;
+            }
+        if(error){
+            throw boost::system::system_error(error);
+            }
+        }
+        catch(std::exception& e){
+            std::cout << e.what() << std::endl;
+            }
+        */
+
 }
 
 
@@ -278,6 +337,7 @@ int main(){
         
         boost::system::error_code error;
         //oper
+        /*
         try{
         size_t len = boost::asio::read(socket,boost::asio::buffer(buf),boost::asio::transfer_exactly(5) ,error);
         std::cout <<"length of message in bytes: " << len <<std::endl;
@@ -292,48 +352,24 @@ int main(){
         catch(std::exception& e){
             std::cout << e.what() << std::endl;
             }
-        
+        */
         //len of msg
-        char s[20];
-        try{
-            
-            size_t len = boost::asio::read(socket,boost::asio::buffer(s),boost::asio::transfer_exactly(20) ,error);
-            std::cout <<"length of message in bytes: " << len <<std::endl;
-        std::cout<< "message: "; std::cout.write(s,20) << std::endl;
-        if( error == boost::asio::error::eof){
-            throw boost::asio::error::eof;
-            }
-        if(error){
-            throw boost::system::system_error(error);
-            }
-        }
-        catch(std::exception& e){
-            std::cout << e.what() << std::endl;
-            }
+        int msg_len = receiveMsgLen(socket); 
 
-            //conv msg into input
-            int msg_len =atoi(s);
-            
-
-        //payload, receive bytestream of helib file
-            try{
-            boost::asio::streambuf key_sb;
-            std::istream inp(&key_sb);
-            size_t len = boost::asio::read(socket, key_sb,boost::asio::transfer_exactly(msg_len) ,error);
-            std::cout <<"length of message in bytes: " << len <<std::endl;
-            helib::PubKey key = helib::PubKey::readFrom(inp, hel_context);
+        boost::asio::streambuf sbuf;
+        //receiving message of len "msg_len" in sbuf
+        receiveMsg(socket,sbuf,msg_len, &hel_context);
+        std::istream inp(&sbuf);
+        helib::PubKey client_key = helib::PubKey::readFrom(inp, hel_context);
         
-        if( error == boost::asio::error::eof){
-            throw boost::asio::error::eof;
-            }
-        if(error){
-            throw boost::system::system_error(error);
-            }
-        }
-        catch(std::exception& e){
-            std::cout << e.what() << std::endl;
-            }
-   
+
+        std::string succ ="success";
+
+        
+        boost::asio::write(socket, boost::asio::buffer(succ),error);
+
+
+
     return 0;
 
     }

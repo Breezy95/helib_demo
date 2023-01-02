@@ -22,13 +22,11 @@ cd /home/fabreezy/Documents/Projects/helib_demo && /usr/bin/cmake -E cmake_depen
 make[2]: Leaving directory '/home/fabreezy/Documents/Projects/helib_demo'
 make -s -f CMakeFiles/client_test.dir/build.make CMakeFiles/client_test.dir/build
 make[2]: Entering directory '/home/fabreezy/Documents/Projects/helib_demo'
-/usr/bin/cmake -E cmake_echo_color --switch= --green --progress-dir=/home/fabreezy/Documents/Projects/helib_demo/CMakeFiles --progress-num=1 "Building CXX object CMakeFiles/client_test.dir/client.cpp.o"
-/usr/bin/c++ -DHELIB_BOOT_THREADS -DHELIB_THREADS -isystem /usr/local/helib_pack/include -std=c++17 -o CMakeFiles/client_test.dir/client.cpp.o -c /home/fabreezy/Documents/Projects/helib_demo/client.cpp
-/usr/bin/cmake -E cmake_echo_color --switch= --green --bold --progress-dir=/home/fabreezy/Documents/Projects/helib_demo/CMakeFiles --progress-num=2 "Linking CXX executable client_test"
-/usr/bin/cmake -E cmake_link_script CMakeFiles/client_test.dir/link.txt --verbose=
 make[2]: Leaving directory '/home/fabreezy/Documents/Projects/helib_demo'
-/usr/bin/cmake -E cmake_echo_color --switch= --progress-dir=/home/fabreezy/Documents/Projects/helib_demo/CMakeFiles --progress-num=1,2 "Built target client_test"
 make[1]: Leaving directory '/home/fabreezy/Documents/Projects/helib_demo'
-/usr/bin/cmake -E cmake_progress_start /home/fabreezy/Documents/Projects/helib_demo/CMakeFiles 0
 make: Leaving directory '/home/fabreezy/Documents/Projects/helib_demo'
  
+make[2]: *** No rule to make target '/usr/local/helib_pack/include/helib/binio.h', needed by 'CMakeFiles/client_test.dir/client.cpp.o'.
+make[1]: *** [CMakeFiles/Makefile2:124: CMakeFiles/client_test.dir/all] Error 2
+make: *** [Makefile:103: all] Error 2
+
